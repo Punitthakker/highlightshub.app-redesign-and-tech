@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HighlightsHub - Redesign Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600;700&family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* =====================================================================
    HIGHLIGHTSHUB · DESIGN SYSTEM
@@ -15,11 +15,11 @@
    One config skins the whole product: set the --club-* tokens.
    ===================================================================== */
 :root{
-  --bg:#0b0e14; --bg-2:#131722; --ink-1:#f7f3ea; --ink-2:#c9c6bd; --ink-3:#938f86;
-  --rule:rgba(247,243,234,.1); --rule-2:rgba(247,243,234,.18); --well:rgba(247,243,234,.05); --well-2:rgba(247,243,234,.09);
-  --accent:#ffb224; --accent-ink:#1a1200; --signal:#6ec6ff; --signal-ink:#07141f;
-  --club-primary:#ffb224; --club-secondary:#f7f3ea; --club-ink:#1a1200;
-  --win:#58d68d; --draw:#ffb224; --loss:#ff6b6b;
+  --bg:#0f1216; --bg-2:#171b21; --ink-1:#eceef1; --ink-2:#b9bec6; --ink-3:#848b95;
+  --rule:rgba(236,238,241,.09); --rule-2:rgba(236,238,241,.16); --well:rgba(236,238,241,.05); --well-2:rgba(236,238,241,.09);
+  --accent:#27a567; --accent-ink:#ffffff; --accent-rgb:39,165,103; --signal:#2f6bff; --signal-ink:#ffffff; --info-rgb:47,107,255; --live:#d7263d;
+  --club-primary:#27a567; --club-secondary:#eceef1; --club-ink:#ffffff;
+  --win:#27a567; --draw:#c9a227; --loss:#d7263d;
   --bronze1:#d59a5c; --bronze2:#a86d36; --silver1:#eef1f5; --silver2:#8c96a3; --gold1:#ffd872; --gold2:#b8841a; --legend1:#d6c6ff; --legend2:#7a62c9;
   --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Barlow",system-ui,sans-serif;
   --r:12px; --r-lg:18px; --gutter:20px;
@@ -139,8 +139,8 @@ svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75;str
 .strip .v.ac{color:var(--accent)}.strip .v.sg{color:var(--signal)}
 .strip .l{font-size:12px;color:var(--ink-3);margin-top:6px;font-weight:500}
 .tag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 8px;border-radius:5px;background:var(--well-2);line-height:1;white-space:nowrap}
-.tag.live{background:#e5312b;color:#fff}
-.tag.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:6px}
+.tag.live{background:var(--live);color:#fff}
+.tag.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-inline-end:6px}
 .tag.gotw{background:var(--signal);color:var(--signal-ink)}
 .tag.pro{background:var(--gold1);color:#2a1a00}
 .tag.ok{background:var(--accent);color:var(--accent-ink)}
@@ -169,7 +169,7 @@ svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75;str
 .notice svg{margin-top:1px}
 .notice.err{background:rgba(255,107,107,.1);color:var(--ink-1)}
 .notice.err svg{color:var(--loss)}
-.notice.ok{background:rgba(255,178,36,.1)}
+.notice.ok{background:rgba(var(--accent-rgb),.1)}
 .notice.ok svg{color:var(--accent)}
 .notice.warn svg{color:var(--signal)}
 .notice b{font-weight:700}
@@ -309,14 +309,14 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 /* ---------- LEADERBOARD ---------- */
 .lb .hd{display:grid;grid-template-columns:30px 1fr 36px 36px 54px;padding:0 0 8px;font-size:12px;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--rule-2)}
 .lb .r{display:grid;grid-template-columns:30px 1fr 36px 36px 54px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px;position:relative}
-.lb .r.me{background:linear-gradient(90deg,rgba(255,178,36,.1),transparent);margin:0 calc(-1*var(--gutter));padding-left:var(--gutter);padding-right:var(--gutter)}
+.lb .r.me{background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),transparent);margin:0 calc(-1*var(--gutter));padding-left:var(--gutter);padding-right:var(--gutter)}
 .lb .r.me .rk{color:var(--accent)}
 .lb .rk{font-family:var(--display);font-weight:900;font-size:20px}
 .lb .nm{font-weight:600;display:flex;align-items:center;gap:8px;min-width:0}
 .lb .nm span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mv{font-size:12px;font-weight:700;padding:3px 6px;border-radius:4px;flex:none;display:inline-flex;align-items:center;gap:2px;line-height:1}
 .mv svg{width:10px;height:10px;stroke-width:2.5}
-.mv.up{color:var(--win);background:rgba(255,178,36,.12)}
+.mv.up{color:var(--win);background:rgba(var(--accent-rgb),.12)}
 .mv.dn{color:var(--loss);background:rgba(255,107,107,.12)}
 .mv.eq{color:var(--ink-3)}
 .lb .v{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;font-variant-numeric:tabular-nums}
@@ -374,7 +374,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 .drop .ic svg{width:32px;height:32px}
 .scan{border-radius:var(--r-lg);overflow:hidden;position:relative}
 .scan svg{width:100%;display:block}
-.scan .beam{position:absolute;top:0;bottom:0;width:80px;background:linear-gradient(90deg,transparent,rgba(255,178,36,.4),rgba(255,178,36,.95),transparent);left:-90px}
+.scan .beam{position:absolute;top:0;bottom:0;width:80px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.4),rgba(var(--accent-rgb),.95),transparent);left:-90px}
 .scan.go .beam{animation:beam 2.4s linear infinite}
 @keyframes beam{to{left:110%}}
 .scan .found{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--signal);display:grid;place-items:center;color:var(--signal-ink);transform:scale(0);animation:pop .5s var(--out) forwards}
@@ -384,7 +384,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 .scan .lbl b{color:var(--accent)}
 .check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink-2);line-height:1.5;padding:12px 0;border-bottom:1px solid var(--rule)}
 .check:last-child{border-bottom:0}
-.check i{width:24px;height:24px;border-radius:6px;background:rgba(255,178,36,.14);color:var(--accent);display:grid;place-items:center;font-style:normal;flex:none;font-family:var(--display);font-weight:800;font-size:14px}
+.check i{width:24px;height:24px;border-radius:6px;background:rgba(var(--accent-rgb),.14);color:var(--accent);display:grid;place-items:center;font-style:normal;flex:none;font-family:var(--display);font-weight:800;font-size:14px}
 .parts .p{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px}
 .parts .p b{font-family:var(--display);font-size:18px;color:var(--ink-3);font-weight:800}
 .parts .p .bar{margin-top:6px}
@@ -465,7 +465,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
    structure above. The tokens below override the flat v1 surface.
    ===================================================================== */
 :root{
-  --glow:0 0 0 1px rgba(255,178,36,.22),0 12px 34px -8px rgba(255,178,36,.55);
+  --glow:0 0 0 1px rgba(var(--accent-rgb),.22),0 12px 34px -8px rgba(var(--accent-rgb),.55);
   --glow-club:0 0 0 1px color-mix(in srgb,var(--club-primary) 30%,transparent),0 14px 36px -10px color-mix(in srgb,var(--club-primary) 70%,transparent);
   --lift:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
   --lift-line:1px solid rgba(255,255,255,.09);
@@ -473,7 +473,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
   --display-it:italic;
 }
 body{background:#07090e}
-.stage{background:radial-gradient(900px 600px at 50% -10%,rgba(255,178,36,.16),transparent 60%),#07090e}
+.stage{background:radial-gradient(900px 600px at 50% -10%,rgba(var(--accent-rgb),.16),transparent 60%),#07090e}
 .stage .beam{display:none}
 canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .stage>canvas.atmos{z-index:0}
@@ -486,7 +486,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .tabbar button.on{position:relative}
 .tabbar button.on::after{content:"";position:absolute;top:-2px;width:18px;height:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
 .tabbar button svg{filter:drop-shadow(0 0 0 transparent);transition:filter .3s}
-.tabbar button.on svg{filter:drop-shadow(0 0 8px rgba(255,178,36,.7))}
+.tabbar button.on svg{filter:drop-shadow(0 0 8px rgba(var(--accent-rgb),.7))}
 
 /* ticker */
 .ticker{position:relative;z-index:4;overflow:hidden;height:30px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:600;color:var(--ink-2);display:flex;align-items:center}
@@ -519,18 +519,18 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .tr.new{box-shadow:0 0 0 1px var(--gold1),0 0 40px -4px var(--gold1)}
 .share button:hover{transform:translateY(-2px);box-shadow:var(--lift-shadow),var(--glow)}
 .share button{transition:transform .2s var(--out),box-shadow .2s}
-.share button svg{filter:drop-shadow(0 0 8px rgba(255,178,36,.6))}
+.share button svg{filter:drop-shadow(0 0 8px rgba(var(--accent-rgb),.6))}
 .role.on{background:linear-gradient(180deg,#fff,#e9e6de);box-shadow:0 20px 40px -18px rgba(255,255,255,.5)}
 .story{box-shadow:0 20px 40px -16px rgba(0,0,0,.9);transition:transform .25s var(--out)}
 .story:hover{transform:translateY(-4px)}
 .player{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08),0 0 60px -20px color-mix(in srgb,var(--club-primary) 60%,transparent)}
 .scan{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08)}
-.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,178,36,.5),0 0 60px -10px rgba(255,178,36,.6)}
+.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(var(--accent-rgb),.5),0 0 60px -10px rgba(var(--accent-rgb),.6)}
 .vcard{background:#0b0e14;box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.1)}
 
 /* buttons */
-.btn.primary{background:linear-gradient(180deg,#ffd166,#f29d00);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 28px -8px rgba(255,178,36,.7)}
-.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 16px 36px -8px rgba(255,178,36,.9);filter:brightness(1.05)}
+.btn.primary{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 88%,#fff),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 28px -8px rgba(var(--accent-rgb),.7)}
+.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 16px 36px -8px rgba(var(--accent-rgb),.9);filter:brightness(1.05)}
 .btn.club{background:linear-gradient(180deg,color-mix(in srgb,var(--club-primary) 85%,#fff),var(--club-primary));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),var(--glow-club)}
 .btn.ghost{background:var(--lift);border:var(--lift-line);box-shadow:var(--lift-shadow)}
 .btn{position:relative;overflow:hidden}
@@ -542,18 +542,18 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .clubhero{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 30px 80px -30px var(--club-primary)}
 .badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -6px color-mix(in srgb,var(--club-primary) 80%,transparent)}
 .avatar{box-shadow:var(--lift-shadow);background:var(--lift);border:var(--lift-line)}
-.tag.live{box-shadow:0 0 16px rgba(229,49,43,.7)}
-.tag.gotw{box-shadow:0 0 14px rgba(110,198,255,.5)}
+.tag.live{box-shadow:none}
+.tag.gotw{box-shadow:0 0 14px rgba(var(--info-rgb),.5)}
 .strip{border-color:rgba(255,255,255,.1)}
-.strip .v.ac{text-shadow:0 0 26px rgba(255,178,36,.6)}
-.strip .v.sg{text-shadow:0 0 26px rgba(110,198,255,.6)}
-.goal-row .min{text-shadow:0 0 18px rgba(255,178,36,.5)}
-.spot .rating{text-shadow:0 0 24px rgba(110,198,255,.6)}
+.strip .v.ac{text-shadow:0 0 26px rgba(var(--accent-rgb),.6)}
+.strip .v.sg{text-shadow:0 0 26px rgba(var(--info-rgb),.6)}
+.goal-row .min{text-shadow:0 0 18px rgba(var(--accent-rgb),.5)}
+.spot .rating{text-shadow:0 0 24px rgba(var(--info-rgb),.6)}
 .scrub .mk{box-shadow:0 0 12px color-mix(in srgb,var(--club-primary) 80%,transparent)}
-.scrub .mk.gotw{box-shadow:0 0 12px rgba(110,198,255,.9)}
-.scrub .fill{background:linear-gradient(90deg,var(--accent),#fff);box-shadow:0 0 10px rgba(255,178,36,.6)}
-.bar i{box-shadow:0 0 12px rgba(255,178,36,.6)}
-.pips i.on{box-shadow:0 0 8px rgba(255,178,36,.6)}
+.scrub .mk.gotw{box-shadow:0 0 12px rgba(var(--info-rgb),.9)}
+.scrub .fill{background:linear-gradient(90deg,var(--accent),#fff);box-shadow:0 0 10px rgba(var(--accent-rgb),.6)}
+.bar i{box-shadow:0 0 12px rgba(var(--accent-rgb),.6)}
+.pips i.on{box-shadow:0 0 8px rgba(var(--accent-rgb),.6)}
 .lower3{box-shadow:0 10px 24px -8px rgba(0,0,0,.9)}
 .xp .lvl{text-shadow:0 0 16px rgba(255,255,255,.4)}
 .sec-h{border-bottom:0;position:relative;padding-bottom:12px}
@@ -595,7 +595,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .ku .ov h3{font-size:40px;font-style:italic}
 .ku .ov p{color:var(--ink-2);margin:6px 0 16px;font-size:14px}
 .ku .ov.hide{display:none}
-.ku .pop{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:900;font-style:italic;font-size:44px;color:var(--accent);text-shadow:0 0 30px rgba(255,178,36,.9);opacity:0;pointer-events:none}
+.ku .pop{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:900;font-style:italic;font-size:44px;color:var(--accent);text-shadow:0 0 30px rgba(var(--accent-rgb),.9);opacity:0;pointer-events:none}
 .ku .pop.go{animation:popup .7s var(--out)}
 @keyframes popup{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}30%{opacity:1;transform:translate(-50%,-60%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-90%) scale(1)}}
 
@@ -633,6 +633,117 @@ h1,h2,h3{letter-spacing:0}
 .walk .t small{font-size:11px;color:#555;display:block}
 .walk button{padding:9px 12px;border-radius:9px;background:var(--bg);color:var(--ink-1);font-size:12px;font-weight:700}
 .walk button.x{background:transparent;color:#555;padding:9px 6px}
+
+/* ---------- Light theme ---------- */
+[data-theme=light]{
+  --bg:#f5f6f8; --bg-2:#ffffff; --ink-1:#10141a; --ink-2:#4b545f; --ink-3:#7a828c;
+  --rule:rgba(16,20,26,.08); --rule-2:rgba(16,20,26,.14); --well:rgba(16,20,26,.04); --well-2:rgba(16,20,26,.08);
+  --accent:#1e8a58; --accent-rgb:30,138,88; --signal:#2457d6; --info-rgb:36,87,214; --live:#c2112b; --loss:#c2112b; --win:#1e8a58;
+  --lift:linear-gradient(180deg,#ffffff,#fbfbfc);
+  --lift-line:1px solid rgba(16,20,26,.08);
+  --lift-shadow:0 1px 2px rgba(16,20,26,.06),0 18px 40px -22px rgba(16,20,26,.35);
+  --glow:0 0 0 1px rgba(var(--accent-rgb),.18),0 10px 26px -10px rgba(var(--accent-rgb),.45);
+}
+[data-theme=light] body{background:#e9ebef}
+[data-theme=light] .stage{background:radial-gradient(900px 600px at 50% -10%,rgba(var(--accent-rgb),.12),transparent 60%),#e9ebef}
+[data-theme=light] .rail{background:#f5f6f8;border-right:1px solid var(--rule)}
+[data-theme=light] .app{background:#f5f6f8}
+[data-theme=light] .phone{background:#1b1e24;box-shadow:0 60px 120px -30px rgba(16,20,26,.5)}
+[data-theme=light] .topbar{background:linear-gradient(180deg,rgba(245,246,248,.95),rgba(245,246,248,.7))}
+[data-theme=light] .tabbar{background:linear-gradient(transparent,rgba(245,246,248,.96) 30%)}
+[data-theme=light] .ticker{background:#fff}
+[data-theme=light] .seg button.on{background:var(--ink-1);color:#fff}
+[data-theme=light] .chip.on{background:var(--ink-1);color:#fff;box-shadow:none}
+[data-theme=light] .role.on{background:var(--ink-1);color:#fff;box-shadow:0 20px 40px -18px rgba(16,20,26,.5)}
+[data-theme=light] .role.on .ic{background:rgba(255,255,255,.12);color:#fff}
+[data-theme=light] .role.on .meta{color:#fff;opacity:.75}
+[data-theme=light] .toast{background:var(--ink-1);color:#fff}
+[data-theme=light] .walk{background:var(--ink-1);color:#fff}
+[data-theme=light] .walk .t small{color:rgba(255,255,255,.6)}
+[data-theme=light] .walk button{background:#fff;color:var(--ink-1)}
+[data-theme=light] .pc .plate{background:#15181e}
+[data-theme=light] .story,[data-theme=light] .vcard,[data-theme=light] .player,[data-theme=light] .scan{background:#15181e}
+[data-theme=light] .story .big{color:#fff}
+[data-theme=light] .ku{background:#15181e}
+[data-theme=light] .ku .hud{color:#fff}
+[data-theme=light] .ku .ov h3{color:#fff}
+[data-theme=light] .lower3 span{background:rgba(16,20,26,.92)}
+[data-theme=light] .hero h1 .hl{box-shadow:0 10px 30px -10px rgba(var(--accent-rgb),.6)}
+[data-theme=light] .takeover{background:radial-gradient(600px 500px at 50% 35%,rgba(255,216,114,.5),rgba(245,246,248,.97) 60%)}
+[data-theme=light] .takeover h2{color:#8f5f06;text-shadow:none}
+[data-theme=light] .takeover .ic svg{color:#b8841a;filter:drop-shadow(0 20px 30px rgba(184,132,26,.4))}
+[data-theme=light] .takeover p{color:var(--ink-2)}
+[data-theme=light] .stat .v{color:var(--ink-1)}
+[data-theme=light] .scrub .fill{background:var(--accent);box-shadow:none}
+[data-theme=light] .closing{color:#fff}
+[data-theme=light] .pc .back{background:#fff}
+
+/* ---------- Quieter: colour does jobs, glow comes off ---------- */
+.strip .v.ac,.strip .v.sg,.goal-row .min,.spot .rating,.xp .lvl{text-shadow:none}
+.sec-h::after{box-shadow:none;width:28px;height:2px}
+.scrub .mk,.scrub .mk.gotw,.bar i,.pips i.on,.badge,.tag.gotw{box-shadow:none}
+.scrub .fill{box-shadow:none}
+.tabbar button.on::after{box-shadow:none}
+.tabbar button.on svg{filter:none}
+.tr:not(.locked) svg{filter:none}
+.share button svg{filter:none}
+.tr:not(.locked):hover{box-shadow:var(--lift-shadow)}
+.tr.new{box-shadow:0 0 0 2px var(--gold1)}
+.player{box-shadow:0 30px 60px -24px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08)}
+.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,.8),0 0 0 2px var(--accent)}
+.btn.primary{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 24px -10px rgba(var(--accent-rgb),.6)}
+.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 14px 30px -10px rgba(var(--accent-rgb),.7);filter:none}
+.btn.club{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 24px -10px color-mix(in srgb,var(--club-primary) 60%,transparent)}
+.tagbox,.closing,.clubhero{box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.price.feat{box-shadow:var(--lift-shadow),0 0 0 1px rgba(var(--accent-rgb),.35)}
+.lb .r.me{background:linear-gradient(90deg,rgba(var(--accent-rgb),.12),transparent 70%)}
+.pc .face.front{box-shadow:0 40px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.25)}
+.phone{box-shadow:0 60px 120px -30px rgba(0,0,0,.9)}
+.hero h1{text-shadow:none}
+.hero h1 .hl{box-shadow:0 12px 30px -10px rgba(var(--accent-rgb),.55)}
+.note,.hand{color:var(--signal)}
+.ku .pop{color:var(--accent);text-shadow:none}
+.takeover .rays{display:none}
+.vbar .b i{background:var(--signal)}
+.tag.gotw{background:var(--signal);color:#fff}
+.pc .gotw i{background:var(--signal);color:#fff}
+.spot .av{background:var(--signal);color:#fff}
+.spot .rating{color:var(--signal)}
+.strip .v.sg{color:var(--signal)}
+.scrub .mk.gotw{background:var(--signal)}
+.story .big em{color:#9db9ff}
+.form i.d{background:var(--draw)}
+.check i{background:rgba(var(--accent-rgb),.14)}
+
+/* ---------- Controls in the top bar ---------- */
+.ctl{width:34px;height:34px;border-radius:50%;background:var(--well);display:grid;place-items:center;color:var(--ink-2);flex:none}
+.ctl svg{width:17px;height:17px}
+.ctl.lang{width:auto;padding:0 10px;font-size:12px;font-weight:700;border-radius:999px}
+
+/* ---------- RTL ---------- */
+[dir=rtl] .goal-row::before{left:auto;right:-20px}
+[dir=rtl] .pc .gotw{right:auto;left:16px}
+[dir=rtl] .ticker .run span{animation-name:tickerrtl}
+@keyframes tickerrtl{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+[dir=rtl] .ticker .run span{padding-left:0;padding-right:100%}
+[dir=rtl] .sec-h::after{left:auto;right:0}
+[dir=rtl] .hero h1 .hl{transform:skewX(6deg)}
+[dir=rtl] .note{transform:rotate(2deg);transform-origin:right}
+[dir=rtl] .lb .r.me{background:linear-gradient(270deg,rgba(var(--accent-rgb),.12),transparent 70%);box-shadow:inset -3px 0 0 var(--accent)}
+[dir=rtl] .inwrap svg{left:auto;right:14px}
+[dir=rtl] .input{padding:14px 44px 14px 14px}
+[dir=rtl] .vcard .stamp.yes{left:auto;right:16px}
+[dir=rtl] .vcard .stamp.no{right:auto;left:16px}
+[dir=rtl] .walk .n{order:0}
+html[lang=ar] body,html[lang=ar] button,html[lang=ar] input{font-family:"IBM Plex Sans Arabic","Barlow",system-ui,sans-serif}
+html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] .display,html[lang=ar] .num,html[lang=ar] .pc .name,html[lang=ar] .story .big,html[lang=ar] .lower3{font-family:"Cairo","IBM Plex Sans Arabic",sans-serif;font-style:normal;letter-spacing:0}
+html[lang=ar] .hero h1{font-size:60px;font-weight:900;line-height:1}
+html[lang=ar] .hand,html[lang=ar] .note{font-family:"Cairo",sans-serif;font-size:1em;transform:none;font-weight:600}
+html[lang=ar] .hero h1 .ch{display:inline}
+html[lang=ar] .sec-h h2{font-size:26px}
+
+[dir=rtl] .rail{left:0;right:auto}
+@media (max-width:900px){.railbtn{display:none}.clubtag .s{display:none}.clubtag .n{font-size:17px}}
 </style>
 </head>
 <body>
@@ -658,7 +769,7 @@ h1,h2,h3{letter-spacing:0}
     <div>
       <h4>Club skin · one config</h4>
       <div class="skins" id="skins">
-        <button data-skin="hh" class="on"><span class="sw" style="--a:#ffb224;--b:#f7f3ea"></span>HighlightsHub</button>
+        <button data-skin="hh" class="on"><span class="sw" style="--a:#27a567;--b:#eceef1"></span>HighlightsHub</button>
         <button data-skin="marina"><span class="sw" style="--a:#8a2243;--b:#8fd3ff"></span>Marina FC</button>
         <button data-skin="quoz"><span class="sw" style="--a:#e02424;--b:#ffd166"></span>Al Quoz Utd</button>
         <button data-skin="rovers"><span class="sw" style="--a:#1d5bff;--b:#f6f4ee"></span>Jumeirah Rovers</button>
@@ -680,14 +791,17 @@ h1,h2,h3{letter-spacing:0}
     <div>
       <h4>Palette</h4>
       <div class="swatches">
-        <div><i style="background:#ffb224"></i>Amber #FFB224</div>
-        <div><i style="background:#0b0e14"></i>Night #0B0E14</div>
-        <div><i style="background:#6ec6ff"></i>Sky #6EC6FF</div>
-        <div><i style="background:#f7f3ea"></i>Chalk #F7F3EA</div>
+        <div><i style="background:#27a567"></i>Turf #27A567</div>
+        <div><i style="background:#2f6bff"></i>Royal #2F6BFF</div>
+        <div><i style="background:#d7263d"></i>Crest #D7263D</div>
+        <div><i style="background:#0f1216;border:1px solid #333"></i>Charcoal #0F1216</div>
+        <div><i style="background:#f5f6f8;border:1px solid #ccc"></i>Paper #F5F6F8</div>
         <div><i style="background:#ffd872"></i>Gold tier #FFD872</div>
-        <div><i style="background:#e5312b"></i>Live #E5312B</div>
       </div>
+      <p class="meta" style="margin-top:8px;font-size:11px">Light theme: Turf #1E8A58 · Royal #2457D6 · Crest #C2112B</p>
     </div>
+    <div class="toggle"><span>Light theme</span><button class="sw2" id="thtoggle" onclick="toggleTheme()" aria-label="Light theme"></button></div>
+    <div class="toggle"><span>Arabic</span><button class="sw2" id="artoggle" onclick="toggleLang()" aria-label="Arabic"></button></div>
     <div class="toggle"><span>Reduce motion</span><button class="sw2" id="rmtoggle" onclick="toggleRM()" aria-label="Reduce motion"></button></div>
     <div class="footmark">Broadcast quality for grassroots football.<br><b>Designed by POJOboys.com</b></div>
   </aside>
@@ -699,7 +813,7 @@ h1,h2,h3{letter-spacing:0}
     <div class="phone"><div class="app" id="app"><canvas class="atmos" id="atmos-app"></canvas>
       <header class="topbar">
         <div class="clubtag"><div class="badge" id="tb-badge">HH</div><div><div class="n" id="tb-name">HighlightsHub</div><div class="s" id="tb-sub">Make every game count</div></div></div>
-        <div class="row"><span class="tag live" id="livetag" style="display:none">Live</span><button class="railbtn" onclick="toggleRail(true)">Demo</button><button class="avatar" onclick="go('hub')" aria-label="Your Hub">AA</button></div>
+        <div class="row"><span class="tag live" id="livetag" style="display:none">Live</span><button class="ctl" onclick="toggleTheme()" aria-label="Toggle light and dark"><svg class="i" data-ic="sun"></svg></button><button class="ctl lang" onclick="toggleLang()" id="langbtn">AR</button><button class="railbtn" onclick="toggleRail(true)">Demo</button><button class="avatar" onclick="go('hub')" aria-label="Your Hub">AA</button></div>
       </header>
       <div class="ticker" aria-hidden="true"><div class="lab">Live</div><div class="run"><span><b>GOAL</b> Maan T. 12'<i>·</i><b>GOAL</b> Adam A. 27' nominated for Goal of the Week<i>·</i>Thursday 5s upload: <b>4 goals found</b><i>·</i>Voting closes Sunday<i>·</i>Maan T. climbs to <b>#1</b><i>·</i>Hat-trick hero unlocked by Sami R.<i>·</i></span></div></div>
       <div class="flash" id="flash"></div>
@@ -1051,7 +1165,7 @@ h1,h2,h3{letter-spacing:0}
           <div class="sec rv">
             <div class="sec-h"><h2>Branding</h2><span class="meta">Live preview</span></div>
             <div class="colors">
-              <label>Primary<input type="color" id="c-primary" value="#ffb224" oninput="setClubColors()"></label>
+              <label>Primary<input type="color" id="c-primary" value="#27a567" oninput="setClubColors()"></label>
               <label>Secondary<input type="color" id="c-secondary" value="#f7f3ea" oninput="setClubColors()"></label>
               <label>Club name<input class="input" id="c-name" value="HighlightsHub FC" oninput="setClubName(this.value)"></label>
             </div>
@@ -1181,6 +1295,7 @@ h1,h2,h3{letter-spacing:0}
         <button class="opt" onclick="go('club')"><span class="ic"><svg class="i" data-ic="stadium"></svg></span>Club dashboard<small>Clubs and leagues</small></button>
         <button class="opt" onclick="go('plan')"><span class="ic"><svg class="i" data-ic="cardpay"></svg></span>My plan</button>
         <button class="opt" onclick="go('system')"><span class="ic"><svg class="i" data-ic="grid"></svg></span>Auth, onboarding, empty states</button>
+        <button class="opt" onclick="closeSheet();toggleRail(true)"><span class="ic"><svg class="i" data-ic="play"></svg></span>Demo menu<small>Skins, walkthrough, palette</small></button>
       </div>
     </div></div>
   </main>
@@ -1231,13 +1346,14 @@ const ICONS={
   alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17.5v.5"/>',
   share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"/>',
   cardpay:'<rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20M6 15h4"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>'
 };
 document.querySelectorAll('svg[data-ic]').forEach(s=>{s.setAttribute('viewBox','0 0 24 24');s.setAttribute('aria-hidden','true');s.innerHTML=ICONS[s.dataset.ic]||''});
 
 /* ---------- Player silhouette + pitch scenes (vector geometry, not pictures) ---------- */
 const PLAYER_SVG=`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="34" r="18" fill="#fff" fill-opacity=".92"/><path d="M22 112c0-26 16-40 38-40s38 14 38 40z" fill="#fff" fill-opacity=".92"/><path d="M44 74l16 12 16-12" fill="none" stroke="var(--club-primary)" stroke-width="5" stroke-linecap="round"/><text x="60" y="106" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="24" fill="var(--club-primary)">9</text></svg>`;
-const pitch=(w,h,zoom)=>`<svg class="pitch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123d22"/><stop offset="1" stop-color="#071a0e"/></linearGradient><linearGradient id="fl${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g${w})"/><g fill="#fff" opacity=".06">${[...Array(8)].map((_,i)=>`<rect x="${i*w/8}" y="0" width="${w/16}" height="${h}"/>`).join('')}</g><rect width="${w}" height="${h}" fill="url(#fl${w})"/><g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"><rect x="${w*.06}" y="${h*.1}" width="${w*.88}" height="${h*.8}"/><line x1="${w/2}" y1="${h*.1}" x2="${w/2}" y2="${h*.9}"/><circle cx="${w/2}" cy="${h/2}" r="${h*.14}"/><rect x="${w*.06}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/><rect x="${w*.82}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/></g>${zoom?`<rect x="${w*.62}" y="${h*.28}" width="${w*.3}" height="${h*.44}" fill="none" stroke="#ffb224" stroke-width="2" stroke-dasharray="6 4" rx="6"/>`:''}<circle cx="${w*.42}" cy="${h*.52}" r="${h*.03}" fill="#fff"><animate attributeName="cx" values="${w*.42};${w*.86}" dur="1.6s" begin="indefinite" fill="freeze" id="ballanim${w}"/><animate attributeName="cy" values="${h*.52};${h*.46}" dur="1.6s" begin="indefinite" fill="freeze"/></circle><circle cx="${w*.3}" cy="${h*.6}" r="${h*.045}" fill="var(--club-primary)"/><circle cx="${w*.74}" cy="${h*.4}" r="${h*.045}" fill="#e6e6e6"/><circle cx="${w*.5}" cy="${h*.35}" r="${h*.045}" fill="var(--club-primary)"/></svg>`;
+const pitch=(w,h,zoom)=>`<svg class="pitch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123d22"/><stop offset="1" stop-color="#071a0e"/></linearGradient><linearGradient id="fl${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g${w})"/><g fill="#fff" opacity=".06">${[...Array(8)].map((_,i)=>`<rect x="${i*w/8}" y="0" width="${w/16}" height="${h}"/>`).join('')}</g><rect width="${w}" height="${h}" fill="url(#fl${w})"/><g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"><rect x="${w*.06}" y="${h*.1}" width="${w*.88}" height="${h*.8}"/><line x1="${w/2}" y1="${h*.1}" x2="${w/2}" y2="${h*.9}"/><circle cx="${w/2}" cy="${h/2}" r="${h*.14}"/><rect x="${w*.06}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/><rect x="${w*.82}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/></g>${zoom?`<rect x="${w*.62}" y="${h*.28}" width="${w*.3}" height="${h*.44}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" rx="6"/>`:''}<circle cx="${w*.42}" cy="${h*.52}" r="${h*.03}" fill="#fff"><animate attributeName="cx" values="${w*.42};${w*.86}" dur="1.6s" begin="indefinite" fill="freeze" id="ballanim${w}"/><animate attributeName="cy" values="${h*.52};${h*.46}" dur="1.6s" begin="indefinite" fill="freeze"/></circle><circle cx="${w*.3}" cy="${h*.6}" r="${h*.045}" fill="var(--club-primary)"/><circle cx="${w*.74}" cy="${h*.4}" r="${h*.045}" fill="#e6e6e6"/><circle cx="${w*.5}" cy="${h*.35}" r="${h*.045}" fill="var(--club-primary)"/></svg>`;
 document.querySelectorAll('.photo').forEach(e=>e.innerHTML=PLAYER_SVG);
 document.getElementById('player').insertAdjacentHTML('afterbegin',pitch(640,400,true));
 document.getElementById('preview').insertAdjacentHTML('afterbegin',pitch(280,160,true));
@@ -1246,7 +1362,7 @@ document.querySelectorAll('.vcard').forEach(e=>e.insertAdjacentHTML('afterbegin'
 
 /* ---------- Skins: one config skins the product ---------- */
 const SKINS={
-  hh:{name:'HighlightsHub',short:'HH',p:'#ffb224',s:'#f7f3ea',club:'HighlightsHub FC',sub:'Make every game count'},
+  hh:{name:'HighlightsHub',short:'HH',p:'#27a567',s:'#eceef1',club:'HighlightsHub FC',sub:'Make every game count'},
   marina:{name:'Marina FC',short:'MFC',p:'#8a2243',s:'#8fd3ff',club:'Marina FC',sub:'Est. 2019 · Dubai Marina'},
   quoz:{name:'Al Quoz United',short:'AQU',p:'#e02424',s:'#ffd166',club:'Al Quoz United',sub:'7-a-side · Al Quoz'},
   rovers:{name:'Jumeirah Rovers',short:'JR',p:'#1d5bff',s:'#f7f3ea',club:'Jumeirah Rovers',sub:'Sunday League · Div 2'},
@@ -1391,25 +1507,27 @@ function atmos(cv,opts){
   const o=Object.assign({n:70,beams:true,alpha:1},opts||{});
   function size(){const r=cv.parentElement.getBoundingClientRect();W=cv.width=Math.max(1,r.width*Math.min(2,devicePixelRatio));H=cv.height=Math.max(1,r.height*Math.min(2,devicePixelRatio));ctx.setTransform(Math.min(2,devicePixelRatio),0,0,Math.min(2,devicePixelRatio),0,0);W=r.width;H=r.height;motes=[...Array(o.n)].map(()=>({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.15+Math.random()*.45,p:Math.random()*Math.PI*2,a:.25+Math.random()*.6}))}
   size();new ResizeObserver(size).observe(cv.parentElement);
-  let col='#ffb224',lastc=0;
+  let col='#27a567',lastc=0;
   function frame(){
     t+=1;if(t-lastc>60){col=getComputedStyle(document.documentElement).getPropertyValue('--club-primary').trim()||col;lastc=t}
     ctx.clearRect(0,0,W,H);
     if(o.beams){
       // two slow floodlight beams
-      for(let i=0;i<2;i++){const cx=W*(i?.82:.18)+Math.sin(t/900+i*2)*W*.08;const g=ctx.createRadialGradient(cx,-H*.2,0,cx,-H*.2,H*1.1);g.addColorStop(0,'rgba(246,244,238,.16)');g.addColorStop(.5,'rgba(246,244,238,.04)');g.addColorStop(1,'rgba(246,244,238,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(cx,-H*.2);ctx.lineTo(cx-W*.55,H*1.2);ctx.lineTo(cx+W*.55,H*1.2);ctx.closePath();ctx.fill()}
+      for(let i=0;i<2;i++){const cx=W*(i?.82:.18)+Math.sin(t/900+i*2)*W*.08;const g=ctx.createRadialGradient(cx,-H*.2,0,cx,-H*.2,H*1.1);const L=document.documentElement.dataset.theme==='light';g.addColorStop(0,L?'rgba(16,20,26,.05)':'rgba(236,238,241,.11)');g.addColorStop(.5,L?'rgba(16,20,26,.012)':'rgba(236,238,241,.03)');g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(cx,-H*.2);ctx.lineTo(cx-W*.55,H*1.2);ctx.lineTo(cx+W*.55,H*1.2);ctx.closePath();ctx.fill()}
       // club-colour glow pool bottom
-      const g2=ctx.createRadialGradient(W*.5,H*1.05,0,W*.5,H*1.05,H*.7);g2.addColorStop(0,col+'33');g2.addColorStop(1,col+'00');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+      const g2=ctx.createRadialGradient(W*.5,H*1.05,0,W*.5,H*1.05,H*.7);g2.addColorStop(0,col+(document.documentElement.dataset.theme==='light'?'22':'2a'));g2.addColorStop(1,col+'00');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
     }
-    if(!rm){motes.forEach(m=>{m.y-=m.s;m.x+=Math.sin(t/60+m.p)*.25;if(m.y<-6){m.y=H+6;m.x=Math.random()*W}const a=m.a*(0.6+0.4*Math.sin(t/40+m.p));ctx.fillStyle=`rgba(246,244,238,${a*o.alpha})`;ctx.shadowColor=col;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fill()});ctx.shadowBlur=0}
+    if(!rm){motes.forEach(m=>{m.y-=m.s;m.x+=Math.sin(t/60+m.p)*.25;if(m.y<-6){m.y=H+6;m.x=Math.random()*W}const a=m.a*(0.6+0.4*Math.sin(t/40+m.p));const L2=document.documentElement.dataset.theme==='light';ctx.fillStyle=L2?`rgba(16,20,26,${a*o.alpha*.35})`:`rgba(236,238,241,${a*o.alpha*.8})`;ctx.shadowBlur=0;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fill()});ctx.shadowBlur=0}
     raf=requestAnimationFrame(frame)}
   frame();document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else frame()});
 }
 atmos(document.getElementById('atmos-app'),{n:60});
 if(innerWidth>900)atmos(document.getElementById('atmos-stage'),{n:90,alpha:.7});
 
+let lang='en';
 /* ---------- V2: kinetic headline ---------- */
-(function(){const h=document.getElementById('h1');if(!h)return;let d=0;h.querySelectorAll('span[data-w]').forEach(sp=>{sp.innerHTML=[...sp.dataset.w].map(c=>{d+=.045;return `<span class="ch" style="animation-delay:${d.toFixed(2)}s">${c}</span>`}).join('')})})();
+function kinetic(){const h=document.getElementById('h1');if(!h)return;let d=0;h.querySelectorAll('span[data-w]').forEach(sp=>{const w=lang==='ar'?(AR[sp.dataset.w]||sp.dataset.w):sp.dataset.w;sp.innerHTML=lang==='ar'?`<span class="ch" style="animation-delay:${(d+=.12).toFixed(2)}s">${w}</span>`:[...w].map(c=>{d+=.045;return `<span class="ch" style="animation-delay:${d.toFixed(2)}s">${c}</span>`}).join('')})}
+setTimeout(kinetic,0);
 
 /* ---------- V2: reveals inside the phone scroller ---------- */
 (function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{root:document.getElementById('view'),rootMargin:'0px 0px -8% 0px',threshold:.08});
@@ -1430,11 +1548,11 @@ document.querySelectorAll('.pc-wrap').forEach(w=>{
   const cv=document.getElementById('kucv');if(!cv)return;const ctx=cv.getContext('2d');const W=cv.width,H=cv.height;
   const sc=document.getElementById('ku-score'),bs=document.getElementById('ku-best'),ov=document.getElementById('ku-ov'),ti=document.getElementById('ku-title'),tx=document.getElementById('ku-text'),st=document.getElementById('ku-start'),pop=document.getElementById('ku-pop');
   let best=0;try{best=+localStorage.getItem('hh_ku_best')||0}catch(e){}bs.textContent=best;
-  let ball={x:W/2,y:H*.4,vx:0,vy:0,r:28,rot:0},score=0,run=false,raf,parts=[],col='#ffb224';
+  let ball={x:W/2,y:H*.4,vx:0,vy:0,r:28,rot:0},score=0,run=false,raf,parts=[],col='#27a567';
   function draw(){
     ctx.clearRect(0,0,W,H);
     // pitch floor
-    const g=ctx.createLinearGradient(0,H*.7,0,H);g.addColorStop(0,'rgba(255,178,36,0)');g.addColorStop(1,col+'55');ctx.fillStyle=g;ctx.fillRect(0,H*.7,W,H*.3);
+    const g=ctx.createLinearGradient(0,H*.7,0,H);g.addColorStop(0,'rgba(39,165,103,0)');g.addColorStop(1,col+'55');ctx.fillStyle=g;ctx.fillRect(0,H*.7,W,H*.3);
     ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(W/2,H*.86,90,16,0,0,Math.PI*2);ctx.stroke();
     // shadow
     const sh=Math.max(.2,1-(H*.86-ball.y)/H);ctx.fillStyle=`rgba(0,0,0,${.35*sh})`;ctx.beginPath();ctx.ellipse(ball.x,H*.86,ball.r*sh*1.1,ball.r*sh*.35,0,0,Math.PI*2);ctx.fill();
@@ -1467,6 +1585,49 @@ function walkShow(){const w=WALK[wi];document.getElementById('wk-n').textContent
 function walkStart(){wi=0;walkShow()}
 function walkNext(){if(wi>=WALK.length-1){walkStop();go('reel');setTimeout(()=>document.querySelector('#s-reel .share').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'}),400);toast('That is the loop. Film, upload, tag, share.');return}wi++;walkShow()}
 function walkStop(){wi=-1;document.getElementById('walk').classList.remove('on')}
+
+/* ---------- Theme ---------- */
+let theme='dark';try{theme=localStorage.getItem('hh_theme')||'dark'}catch(e){}
+function setTheme(t){theme=t;document.documentElement.dataset.theme=t;document.getElementById('thtoggle').classList.toggle('on',t==='light');try{localStorage.setItem('hh_theme',t)}catch(e){}}
+function toggleTheme(){setTheme(theme==='light'?'dark':'light')}
+setTheme(theme);
+
+/* ---------- Arabic ---------- */
+const AR={
+"Make every game count":"كل مباراة تُحسب","Live":"مباشر","Home":"الرئيسية","Reel":"اللقطات","Hub":"ملفي","Game":"المباراة","More":"المزيد",
+"Make":"خلّي","every":"كل","game":"مباراة","count.":"تُحسب.",
+"Upload the full match. We find every goal, clip it, auto-zoom the finish and drop it in the group chat before the showers run cold.":"ارفع المباراة كاملة. نلتقط كل هدف، نقصّه، نقرّب اللقطة ونرسله لقروب الشباب قبل ما تبرد المياه.",
+"filmed on a phone, propped on the fence. that's it.":"مصوّرة بجوال مسنود على السياج. بس كذا.",
+"Upload a game":"ارفع مباراة","Find your game":"ابحث عن مباراتك","Goals clipped":"أهداف مقصوصة","Games uploaded":"مباريات مرفوعة","Goals tagged, %":"أهداف موسومة ٪",
+"Warm up":"إحماء","ten in a row = 50 XP":"عشرة متتالية = 50 نقطة","Keepy-uppy":"تنطيط","Keepy-uppies":"تنطيطات","Best":"الأفضل","Tap the ball. Don't let it drop. XP goes straight on your card.":"اضغط على الكرة ولا تخلّيها تطيح. النقاط تنزل على بطاقتك مباشرة.","Kick off":"ابدأ","Go again":"مرة ثانية",
+"Watching needs no account":"المشاهدة ما تحتاج حساب","Pitch, organiser or game code":"الملعب، المنظّم أو رمز المباراة",
+"How it works":"كيف تشتغل","Film the whole pitch":"صوّر الملعب كامل","Any camera that sees both goals. 1080p minimum, 2.7K or 4K recommended. A phone on the fence is fine.":"أي كاميرا تشوف المرمَيين. 1080p كحد أدنى، ونفضّل 2.7K أو 4K. جوال على السياج يكفي.",
+"Upload. We find the goals":"ارفع. نحن نلقى الأهداف","Every finish clipped and auto-zoomed. Matches filmed in parts and multi-game nights get stitched.":"كل تسديدة تُقص وتُقرَّب تلقائياً. المباريات المصوّرة على أجزاء وليالي المباريات المتعددة تُدمج.",
+"Tag it, share it, climb":"وسّم، شارك، اصعد","Tap \"I scored this\" and your card, your stats and your leaderboard spot update on the spot.":"اضغط \"أنا سجّلت\" وتتحدّث بطاقتك وإحصائياتك ومركزك فوراً.",
+"For players":"للاعبين","Your Hub":"ملفي","Your card is a collectible. Score and it ranks up: Bronze, Silver, Gold, Legend. Gold and above gets the foil.":"بطاقتك قطعة للجمع. سجّل وترتقي: برونزي، فضي، ذهبي، أسطورة. الذهبي وما فوق يلمع.",
+"For organisers":"للمنظّمين","Upload flow":"مسار الرفع","Upload once a week, free. Every goal found and clipped for the whole squad.":"ارفع مرة بالأسبوع مجاناً. كل هدف يُلقى ويُقص للفريق كله.","A game page with reels, leaderboard and Goal of the Week, ready for the group chat.":"صفحة مباراة فيها اللقطات والترتيب وهدف الأسبوع، جاهزة للقروب.","Multi-game nights and matches filmed in parts. Pause the camera, we stitch it.":"ليالي المباريات المتعددة والمباريات على أجزاء. أوقف الكاميرا، ونحن ندمج.",
+"Pricing":"الأسعار","Organisers":"المنظّمون","1 game a week":"مباراة بالأسبوع","Free":"مجاني","Every goal found and clipped":"كل هدف يُلقى ويُقص","Game page and leaderboard":"صفحة المباراة والترتيب","Share straight to the group chat":"شارك مباشرة في القروب",
+"Players · Pro":"اللاعبون · برو","Coming soon":"قريباً","/month":"/شهر","/year":"/سنة","Permanent highlights library":"مكتبة لقطات دائمة","Gold and Legend card tiers":"فئتا الذهبي والأسطورة","Achievement cards for every unlock":"بطاقة إنجاز لكل فتح","Join the waitlist":"انضم لقائمة الانتظار",
+"Clubs and leagues":"الأندية والدوريات","Custom":"مخصص","Let's talk":"نتكلم","Your badge and colours on everything":"شعارك وألوانك على كل شيء","Season table and club trophy room":"جدول الموسم وغرفة كؤوس النادي","Roster and organiser management":"إدارة القائمة والمنظّمين",
+"Questions":"أسئلة","Which camera do I need?":"أي كاميرا أحتاج؟","Do my mates need the app?":"هل يحتاج الشباب التطبيق؟","We filmed in two parts. Problem?":"صوّرنا على جزأين. مشكلة؟","What if no goals are found?":"وإذا ما انلقى أي هدف؟",
+"Film it.":"صوّرها.","Upload it.":"ارفعها.","Watch it hit the chat.":"وشوفها توصل القروب.","Upload your first game":"ارفع أول مباراة","Designed by POJOboys.com":"تصميم POJOboys.com",
+"Auto-zoom":"تقريب تلقائي","Goals":"الأهداف","1 untagged":"هدف بلا وسم","assist":"صناعة","Visitors":"الضيوف","Untagged. Who scored?":"بلا وسم. مين سجّل؟","Who played":"مين لعب","Add a player":"أضف لاعب","+3 more":"+3",
+"Who scored?":"مين سجّل؟","Tag it and it lands on your card, your stats and the leaderboard.":"وسّمه وينزل على بطاقتك وإحصائياتك والترتيب.","no VAR here.":"ما فيه فار هنا.","I scored this":"أنا سجّلت","I assisted":"أنا صنعت","Not you?":"مو أنت؟","Tag a mate instead":"وسّم صاحبك",
+"Share it":"شاركها","Story card":"بطاقة ستوري","GIF to chat":"GIF للقروب","Copy link":"انسخ الرابط","Goal of the week":"هدف الأسبوع","Unlocked":"فُتح","Week 12":"الأسبوع 12",
+"Flip card":"اقلب البطاقة","Your Hub · Season 3":"ملفي · الموسم 3","Level":"المستوى","Finisher":"هدّاف","Assists":"صناعة","Games":"مباريات","Form":"الفورمة","Last 5 games":"آخر 5 مباريات","Game streak":"سلسلة مباريات","This week":"هذا الأسبوع",
+"Challenges":"تحديات","Score in 3 straight games":"سجّل في 3 مباريات متتالية","One more on Thursday":"وحدة بعد يوم الخميس","Cast 10 votes":"صوّت 10 مرات","Worth 200 XP":"تساوي 200 نقطة","Golden Boot pace":"على طريق الحذاء الذهبي","One behind Maan T.":"خلف معن ت. بهدف",
+"Trophy cabinet":"خزانة الكؤوس","6 of 11, keep going":"6 من 11، كمّل","First goal":"أول هدف","Brace":"ثنائية","Hat-trick":"هاتريك","10 club":"نادي الـ10","50 club":"نادي الـ50","100 club":"نادي الـ100","Golden Boot":"الحذاء الذهبي","Playmaker":"صانع اللعب","Iron Man":"الرجل الحديدي","Goal of the Month":"هدف الشهر","Legend":"أسطورة","Demo reveal":"عرض تجريبي",
+"Highlights":"اللقطات","Pro keeps forever":"برو يحفظها للأبد","27 days left":"باقي 27 يوم","20 days left":"باقي 20 يوم","See the plan":"شوف الباقة",
+"Reels":"اللقطات","Watch all":"شاهد الكل","Player of the week":"لاعب الأسبوع","Leaderboard":"الترتيب","Simulate a week":"محاكاة أسبوع","Player":"اللاعب","Nah":"لا","That one":"هذا","Swipe to vote":"اسحب للتصويت","swipe · ends Sunday":"اسحب · ينتهي الأحد",
+"Camera check":"فحص الكاميرا","30 seconds":"30 ثانية","Single match":"مباراة واحدة","Filmed in parts":"على أجزاء","Multi-game night":"ليلة متعددة","Drop the full match here":"أسقط المباراة كاملة هنا","Processing":"المعالجة","Waiting for a file":"بانتظار الملف","Upload":"رفع","Scanning for goals":"نبحث عن الأهداف","Auto-zoom and clip":"تقريب وقص","Game page live":"صفحة المباراة جاهزة","Simulate upload and scan":"محاكاة الرفع والفحص","Open game page":"افتح صفحة المباراة","Share link":"شارك الرابط",
+"Branding":"الهوية","Live preview":"معاينة حية","Primary":"الأساسي","Secondary":"الثانوي","Club name":"اسم النادي","Invite":"دعوة","Season table":"جدول الموسم","Roster":"القائمة","Club trophy room":"غرفة كؤوس النادي",
+"My plan":"باقتي","Upgrade":"ترقية","Monthly":"شهري","Yearly, save 17%":"سنوي، وفّر 17٪","Player Pro":"لاعب برو",
+"Auth":"الدخول","Onboarding":"البداية","Empty":"فارغ","Errors":"أخطاء","Claim your card.":"خذ بطاقتك.","Send code":"أرسل الرمز","What brings you here?":"وش جابك؟","I organise games":"أنا أنظّم مباريات","I play":"أنا ألعب","I run a club or league":"أدير نادي أو دوري","Continue":"متابعة","No goals found":"ما انلقى أهداف","Your card is waiting":"بطاقتك بانتظارك","No games yet":"ما فيه مباريات بعد",
+"Next":"التالي","Finish":"إنهاء","End":"إنهاء","Demo":"العرض","AR":"EN"
+};
+const _orig=new WeakMap();
+function translate(node,dict){const w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);const list=[];while(w.nextNode())list.push(w.currentNode);list.forEach(t=>{const raw=t.nodeValue;const k=raw.trim();if(!k)return;if(!_orig.has(t))_orig.set(t,raw);const src=_orig.get(t).trim();if(dict){if(dict[src]!==undefined)t.nodeValue=_orig.get(t).replace(src,dict[src])}else t.nodeValue=_orig.get(t)})}
+function toggleLang(){lang=lang==='en'?'ar':'en';const h=document.documentElement;h.lang=lang;h.dir=lang==='ar'?'rtl':'ltr';translate(document.getElementById('app'),lang==='ar'?AR:null);document.getElementById('langbtn').textContent=lang==='ar'?'EN':'AR';kinetic();document.getElementById('artoggle').classList.toggle('on',lang==='ar');document.querySelectorAll('.input').forEach(i=>{if(i.placeholder){if(!i.dataset.ph)i.dataset.ph=i.placeholder;i.placeholder=lang==='ar'?(AR[i.dataset.ph]||i.dataset.ph):i.dataset.ph}})}
 </script>
 </body>
 </html>
