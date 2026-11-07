@@ -1,6 +1,6 @@
 # HighlightsHub · redesign demo and incremental features
 
-Two things live here.
+Two things live here. The site root (`index.html`) is a plain landing that links to the two proposed additions.
 
 ## 1. Incremental features for the live site (the ask)
 Adam's brief: keep the current look and UX, improve at the margins, feed small changes into master one at a time.
@@ -21,7 +21,7 @@ Both are plain HTML/JS with no build step so they can be dropped into whatever t
    Give `hh-flip-card` the same `border-radius` as the card so the outline matches. Listen for the `flip` event if you want analytics.
 2. Kids Zone: mount `kids/index.html` at a route (for example `/kids`). Replace the font link and the `:root` fallbacks with the site's tokens if they differ. Hook XP into the player card later if wanted; the page keeps its own state until then.
 
-## 2. Full redesign demo (reference only)
-`index.html` is the interactive prototype shown to Adam: eight screens, club skins, light and dark, Arabic, walkthrough. It is parked as reference material. `DESIGN.md` documents its system.
+## 2. Full redesign demo (reference only, at `/demo/`)
+`demo/index.html` is the interactive prototype shown to Adam: eight screens, club skins, light and dark, Arabic, walkthrough. It is parked as reference material. `DESIGN.md` documents its system.
 
 Deployed on Netlify from `main`. Designed by POJOboys.com
