@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HighlightsHub - Redesign Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 /* =====================================================================
    HIGHLIGHTSHUB · DESIGN SYSTEM
@@ -15,12 +15,12 @@
    One config skins the whole product: set the --club-* tokens.
    ===================================================================== */
 :root{
-  --bg:#07090c; --bg-2:#0d1014; --ink-1:#f6f4ee; --ink-2:#c3c6cc; --ink-3:#8e949c;
-  --rule:rgba(246,244,238,.1); --rule-2:rgba(246,244,238,.18); --well:rgba(246,244,238,.05); --well-2:rgba(246,244,238,.09);
-  --accent:#49e87a; --accent-ink:#06130b; --signal:#ffd54a; --signal-ink:#1c1500;
-  --club-primary:#49e87a; --club-secondary:#f6f4ee; --club-ink:#06130b;
-  --win:#49e87a; --draw:#ffd54a; --loss:#ff6b6b;
-  --bronze1:#d59a5c; --bronze2:#a86d36; --silver1:#eef1f5; --silver2:#8c96a3; --gold1:#ffd872; --gold2:#b8841a; --legend1:#cdbcff; --legend2:#7a62c9;
+  --bg:#0b0e14; --bg-2:#131722; --ink-1:#f7f3ea; --ink-2:#c9c6bd; --ink-3:#938f86;
+  --rule:rgba(247,243,234,.1); --rule-2:rgba(247,243,234,.18); --well:rgba(247,243,234,.05); --well-2:rgba(247,243,234,.09);
+  --accent:#ffb224; --accent-ink:#1a1200; --signal:#6ec6ff; --signal-ink:#07141f;
+  --club-primary:#ffb224; --club-secondary:#f7f3ea; --club-ink:#1a1200;
+  --win:#58d68d; --draw:#ffb224; --loss:#ff6b6b;
+  --bronze1:#d59a5c; --bronze2:#a86d36; --silver1:#eef1f5; --silver2:#8c96a3; --gold1:#ffd872; --gold2:#b8841a; --legend1:#d6c6ff; --legend2:#7a62c9;
   --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Barlow",system-ui,sans-serif;
   --r:12px; --r-lg:18px; --gutter:20px;
   --out:cubic-bezier(.16,1,.3,1);
@@ -169,7 +169,7 @@ svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75;str
 .notice svg{margin-top:1px}
 .notice.err{background:rgba(255,107,107,.1);color:var(--ink-1)}
 .notice.err svg{color:var(--loss)}
-.notice.ok{background:rgba(73,232,122,.1)}
+.notice.ok{background:rgba(255,178,36,.1)}
 .notice.ok svg{color:var(--accent)}
 .notice.warn svg{color:var(--signal)}
 .notice b{font-weight:700}
@@ -217,7 +217,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 .pc .face{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;overflow:hidden;padding:16px;display:flex;flex-direction:column}
 .pc .back{transform:rotateY(180deg);background:var(--bg-2);border:1px solid var(--rule-2)}
 .pc .face.front{background:linear-gradient(168deg,var(--t1) 0%,var(--t2) 100%);box-shadow:0 30px 50px -24px rgba(0,0,0,.9);padding-bottom:0}
-.pc .plate{position:relative;z-index:1;background:#0d0f13;margin:0 -16px 0;padding:12px 16px 14px;border-top:1px solid rgba(255,255,255,.14)}
+.pc .plate{position:relative;z-index:1;background:#10131b;margin:0 -16px 0;padding:12px 16px 14px;border-top:1px solid rgba(255,255,255,.14)}
 .pc[data-tier=bronze]{--t1:var(--bronze1);--t2:var(--bronze2)}
 .pc[data-tier=silver]{--t1:var(--silver1);--t2:var(--silver2)}
 .pc[data-tier=gold]{--t1:var(--gold1);--t2:var(--gold2)}
@@ -309,14 +309,14 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 /* ---------- LEADERBOARD ---------- */
 .lb .hd{display:grid;grid-template-columns:30px 1fr 36px 36px 54px;padding:0 0 8px;font-size:12px;color:var(--ink-3);font-weight:600;border-bottom:1px solid var(--rule-2)}
 .lb .r{display:grid;grid-template-columns:30px 1fr 36px 36px 54px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px;position:relative}
-.lb .r.me{background:linear-gradient(90deg,rgba(73,232,122,.1),transparent);margin:0 calc(-1*var(--gutter));padding-left:var(--gutter);padding-right:var(--gutter)}
+.lb .r.me{background:linear-gradient(90deg,rgba(255,178,36,.1),transparent);margin:0 calc(-1*var(--gutter));padding-left:var(--gutter);padding-right:var(--gutter)}
 .lb .r.me .rk{color:var(--accent)}
 .lb .rk{font-family:var(--display);font-weight:900;font-size:20px}
 .lb .nm{font-weight:600;display:flex;align-items:center;gap:8px;min-width:0}
 .lb .nm span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mv{font-size:12px;font-weight:700;padding:3px 6px;border-radius:4px;flex:none;display:inline-flex;align-items:center;gap:2px;line-height:1}
 .mv svg{width:10px;height:10px;stroke-width:2.5}
-.mv.up{color:var(--win);background:rgba(73,232,122,.12)}
+.mv.up{color:var(--win);background:rgba(255,178,36,.12)}
 .mv.dn{color:var(--loss);background:rgba(255,107,107,.12)}
 .mv.eq{color:var(--ink-3)}
 .lb .v{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;font-variant-numeric:tabular-nums}
@@ -374,7 +374,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 .drop .ic svg{width:32px;height:32px}
 .scan{border-radius:var(--r-lg);overflow:hidden;position:relative}
 .scan svg{width:100%;display:block}
-.scan .beam{position:absolute;top:0;bottom:0;width:80px;background:linear-gradient(90deg,transparent,rgba(73,232,122,.4),rgba(73,232,122,.95),transparent);left:-90px}
+.scan .beam{position:absolute;top:0;bottom:0;width:80px;background:linear-gradient(90deg,transparent,rgba(255,178,36,.4),rgba(255,178,36,.95),transparent);left:-90px}
 .scan.go .beam{animation:beam 2.4s linear infinite}
 @keyframes beam{to{left:110%}}
 .scan .found{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--signal);display:grid;place-items:center;color:var(--signal-ink);transform:scale(0);animation:pop .5s var(--out) forwards}
@@ -384,7 +384,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 .scan .lbl b{color:var(--accent)}
 .check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink-2);line-height:1.5;padding:12px 0;border-bottom:1px solid var(--rule)}
 .check:last-child{border-bottom:0}
-.check i{width:24px;height:24px;border-radius:6px;background:rgba(73,232,122,.14);color:var(--accent);display:grid;place-items:center;font-style:normal;flex:none;font-family:var(--display);font-weight:800;font-size:14px}
+.check i{width:24px;height:24px;border-radius:6px;background:rgba(255,178,36,.14);color:var(--accent);display:grid;place-items:center;font-style:normal;flex:none;font-family:var(--display);font-weight:800;font-size:14px}
 .parts .p{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px}
 .parts .p b{font-family:var(--display);font-size:18px;color:var(--ink-3);font-weight:800}
 .parts .p .bar{margin-top:6px}
@@ -465,28 +465,28 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
    structure above. The tokens below override the flat v1 surface.
    ===================================================================== */
 :root{
-  --glow:0 0 0 1px rgba(73,232,122,.22),0 12px 34px -8px rgba(73,232,122,.55);
+  --glow:0 0 0 1px rgba(255,178,36,.22),0 12px 34px -8px rgba(255,178,36,.55);
   --glow-club:0 0 0 1px color-mix(in srgb,var(--club-primary) 30%,transparent),0 14px 36px -10px color-mix(in srgb,var(--club-primary) 70%,transparent);
   --lift:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
   --lift-line:1px solid rgba(255,255,255,.09);
   --lift-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 48px -22px rgba(0,0,0,.95);
   --display-it:italic;
 }
-body{background:#030406}
-.stage{background:radial-gradient(900px 600px at 50% -10%,rgba(73,232,122,.14),transparent 60%),#030406}
+body{background:#07090e}
+.stage{background:radial-gradient(900px 600px at 50% -10%,rgba(255,178,36,.16),transparent 60%),#07090e}
 .stage .beam{display:none}
 canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .stage>canvas.atmos{z-index:0}
 .phone{z-index:1;box-shadow:0 60px 120px -30px rgba(0,0,0,.95),0 0 80px -20px color-mix(in srgb,var(--club-primary) 35%,transparent)}
-.app{background:#05070a}
+.app{background:#0b0e14}
 .topbar,.view,.tabbar,.sheet,.appscrim,.toast,.flash{z-index:auto}
-.topbar{position:relative;z-index:5;background:linear-gradient(180deg,rgba(5,7,10,.9),rgba(5,7,10,.5));backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.07)}
+.topbar{position:relative;z-index:5;background:linear-gradient(180deg,rgba(11,14,20,.9),rgba(11,14,20,.5));backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.07)}
 .view{z-index:1}
-.tabbar{z-index:6;background:linear-gradient(transparent,rgba(5,7,10,.92) 30%)}
+.tabbar{z-index:6;background:linear-gradient(transparent,rgba(11,14,20,.92) 30%)}
 .tabbar button.on{position:relative}
 .tabbar button.on::after{content:"";position:absolute;top:-2px;width:18px;height:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
 .tabbar button svg{filter:drop-shadow(0 0 0 transparent);transition:filter .3s}
-.tabbar button.on svg{filter:drop-shadow(0 0 8px rgba(73,232,122,.7))}
+.tabbar button.on svg{filter:drop-shadow(0 0 8px rgba(255,178,36,.7))}
 
 /* ticker */
 .ticker{position:relative;z-index:4;overflow:hidden;height:30px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:600;color:var(--ink-2);display:flex;align-items:center}
@@ -512,25 +512,25 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .seg{padding:3px}
 .seg button.on{box-shadow:0 6px 16px -6px rgba(0,0,0,.8)}
 .input{box-shadow:var(--lift-shadow)}
-.input:focus{box-shadow:var(--lift-shadow),var(--glow);background:rgba(5,7,10,.6)}
+.input:focus{box-shadow:var(--lift-shadow),var(--glow);background:rgba(11,14,20,.6)}
 .tr{box-shadow:var(--lift-shadow);transition:transform .25s var(--out),box-shadow .25s}
 .tr:not(.locked):hover{transform:translateY(-3px);box-shadow:var(--lift-shadow),0 0 24px -6px rgba(255,216,114,.5)}
 .tr:not(.locked) svg{filter:drop-shadow(0 0 8px rgba(255,216,114,.5))}
 .tr.new{box-shadow:0 0 0 1px var(--gold1),0 0 40px -4px var(--gold1)}
 .share button:hover{transform:translateY(-2px);box-shadow:var(--lift-shadow),var(--glow)}
 .share button{transition:transform .2s var(--out),box-shadow .2s}
-.share button svg{filter:drop-shadow(0 0 8px rgba(73,232,122,.6))}
+.share button svg{filter:drop-shadow(0 0 8px rgba(255,178,36,.6))}
 .role.on{background:linear-gradient(180deg,#fff,#e9e6de);box-shadow:0 20px 40px -18px rgba(255,255,255,.5)}
 .story{box-shadow:0 20px 40px -16px rgba(0,0,0,.9);transition:transform .25s var(--out)}
 .story:hover{transform:translateY(-4px)}
 .player{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08),0 0 60px -20px color-mix(in srgb,var(--club-primary) 60%,transparent)}
 .scan{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08)}
-.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(73,232,122,.5),0 0 60px -10px rgba(73,232,122,.6)}
-.vcard{background:#05070a;box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.1)}
+.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,178,36,.5),0 0 60px -10px rgba(255,178,36,.6)}
+.vcard{background:#0b0e14;box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.1)}
 
 /* buttons */
-.btn.primary{background:linear-gradient(180deg,#7dffa6,#3fdc70);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 28px -8px rgba(73,232,122,.7)}
-.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 16px 36px -8px rgba(73,232,122,.9);filter:brightness(1.05)}
+.btn.primary{background:linear-gradient(180deg,#ffd166,#f29d00);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 28px -8px rgba(255,178,36,.7)}
+.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 16px 36px -8px rgba(255,178,36,.9);filter:brightness(1.05)}
 .btn.club{background:linear-gradient(180deg,color-mix(in srgb,var(--club-primary) 85%,#fff),var(--club-primary));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),var(--glow-club)}
 .btn.ghost{background:var(--lift);border:var(--lift-line);box-shadow:var(--lift-shadow)}
 .btn{position:relative;overflow:hidden}
@@ -543,17 +543,17 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -6px color-mix(in srgb,var(--club-primary) 80%,transparent)}
 .avatar{box-shadow:var(--lift-shadow);background:var(--lift);border:var(--lift-line)}
 .tag.live{box-shadow:0 0 16px rgba(229,49,43,.7)}
-.tag.gotw{box-shadow:0 0 14px rgba(255,213,74,.5)}
+.tag.gotw{box-shadow:0 0 14px rgba(110,198,255,.5)}
 .strip{border-color:rgba(255,255,255,.1)}
-.strip .v.ac{text-shadow:0 0 26px rgba(73,232,122,.6)}
-.strip .v.sg{text-shadow:0 0 26px rgba(255,213,74,.6)}
-.goal-row .min{text-shadow:0 0 18px rgba(73,232,122,.5)}
-.spot .rating{text-shadow:0 0 24px rgba(255,213,74,.6)}
+.strip .v.ac{text-shadow:0 0 26px rgba(255,178,36,.6)}
+.strip .v.sg{text-shadow:0 0 26px rgba(110,198,255,.6)}
+.goal-row .min{text-shadow:0 0 18px rgba(255,178,36,.5)}
+.spot .rating{text-shadow:0 0 24px rgba(110,198,255,.6)}
 .scrub .mk{box-shadow:0 0 12px color-mix(in srgb,var(--club-primary) 80%,transparent)}
-.scrub .mk.gotw{box-shadow:0 0 12px rgba(255,213,74,.9)}
-.scrub .fill{background:linear-gradient(90deg,var(--accent),#fff);box-shadow:0 0 10px rgba(73,232,122,.6)}
-.bar i{box-shadow:0 0 12px rgba(73,232,122,.6)}
-.pips i.on{box-shadow:0 0 8px rgba(73,232,122,.6)}
+.scrub .mk.gotw{box-shadow:0 0 12px rgba(110,198,255,.9)}
+.scrub .fill{background:linear-gradient(90deg,var(--accent),#fff);box-shadow:0 0 10px rgba(255,178,36,.6)}
+.bar i{box-shadow:0 0 12px rgba(255,178,36,.6)}
+.pips i.on{box-shadow:0 0 8px rgba(255,178,36,.6)}
 .lower3{box-shadow:0 10px 24px -8px rgba(0,0,0,.9)}
 .xp .lvl{text-shadow:0 0 16px rgba(255,255,255,.4)}
 .sec-h{border-bottom:0;position:relative;padding-bottom:12px}
@@ -591,11 +591,11 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .ku .hud{z-index:2;position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;font-family:var(--display);font-weight:900;font-size:30px;pointer-events:none;text-shadow:0 0 20px rgba(0,0,0,.8)}
 .ku .hud small{display:block;font-family:var(--body);font-weight:600;font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
 .ku .hud .r{text-align:right}
-.ku .ov{z-index:1;position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(5,7,10,.55);backdrop-filter:blur(4px);padding:20px}
+.ku .ov{z-index:1;position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(11,14,20,.55);backdrop-filter:blur(4px);padding:20px}
 .ku .ov h3{font-size:40px;font-style:italic}
 .ku .ov p{color:var(--ink-2);margin:6px 0 16px;font-size:14px}
 .ku .ov.hide{display:none}
-.ku .pop{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:900;font-style:italic;font-size:44px;color:var(--accent);text-shadow:0 0 30px rgba(73,232,122,.9);opacity:0;pointer-events:none}
+.ku .pop{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:900;font-style:italic;font-size:44px;color:var(--accent);text-shadow:0 0 30px rgba(255,178,36,.9);opacity:0;pointer-events:none}
 .ku .pop.go{animation:popup .7s var(--out)}
 @keyframes popup{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}30%{opacity:1;transform:translate(-50%,-60%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-90%) scale(1)}}
 
@@ -611,6 +611,28 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .rm .ticker .run span{animation:none;padding-left:0}
 .rm .horizon .move{animation:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.hero h1 .ch{opacity:1;transform:none;animation:none}.ticker .run span{animation:none;padding-left:0}}
+
+.hand{font-family:"Caveat",cursive;font-size:1.35em;line-height:1;color:var(--accent);font-weight:600}
+.note{font-family:"Caveat",cursive;font-size:20px;line-height:1.1;color:var(--accent);display:inline-block;transform:rotate(-2deg);transform-origin:left}
+.note.sky{color:var(--signal)}
+.hero .note{margin-top:14px;font-size:22px}
+.sec-h .meta.hand{font-size:19px;color:var(--ink-2)}
+.swatches{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.swatches div{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.swatches i{width:18px;height:18px;border-radius:5px;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+h1,h2,h3{letter-spacing:0}
+.hero h1{text-transform:none;font-style:italic}
+.sec-h h2{text-transform:none;font-size:30px}
+.closing h2,.tagbox h3,.takeover h2{text-transform:none}
+
+.walk{position:absolute;left:14px;right:14px;bottom:96px;z-index:30;background:var(--ink-1);color:var(--bg);border-radius:14px;padding:10px 10px 10px 14px;display:none;align-items:center;gap:10px;box-shadow:0 20px 40px -14px rgba(0,0,0,.9)}
+.walk.on{display:flex}
+.walk .n{font-family:var(--display);font-weight:900;font-size:22px;line-height:1}
+.walk .t{flex:1;min-width:0}
+.walk .t b{display:block;font-size:13px;line-height:1.2}
+.walk .t small{font-size:11px;color:#555;display:block}
+.walk button{padding:9px 12px;border-radius:9px;background:var(--bg);color:var(--ink-1);font-size:12px;font-weight:700}
+.walk button.x{background:transparent;color:#555;padding:9px 6px}
 </style>
 </head>
 <body>
@@ -636,11 +658,15 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
     <div>
       <h4>Club skin · one config</h4>
       <div class="skins" id="skins">
-        <button data-skin="hh" class="on"><span class="sw" style="--a:#49e87a;--b:#f6f4ee"></span>HighlightsHub</button>
+        <button data-skin="hh" class="on"><span class="sw" style="--a:#ffb224;--b:#f7f3ea"></span>HighlightsHub</button>
         <button data-skin="marina"><span class="sw" style="--a:#8a2243;--b:#8fd3ff"></span>Marina FC</button>
         <button data-skin="quoz"><span class="sw" style="--a:#e02424;--b:#ffd166"></span>Al Quoz Utd</button>
         <button data-skin="rovers"><span class="sw" style="--a:#1d5bff;--b:#f6f4ee"></span>Jumeirah Rovers</button>
       </div>
+    </div>
+    <div>
+      <h4>Adam walkthrough</h4>
+      <div class="trig"><button onclick="walkStart()"><svg class="i" data-ic="play"></svg>Start the 6-step demo flow</button></div>
     </div>
     <div>
       <h4>Fire a moment</h4>
@@ -649,6 +675,17 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
         <button onclick="unlockTrophy('Hat-trick hero','Three in one game. Unreal.')"><svg class="i" data-ic="trophy"></svg>Trophy unlock takeover</button>
         <button onclick="go('game');setTimeout(shuffleRanks,450)"><svg class="i" data-ic="trend"></svg>Leaderboard rank change</button>
         <button onclick="go('upload');setTimeout(startScan,350)"><svg class="i" data-ic="camera"></svg>Pitch-scan upload</button>
+      </div>
+    </div>
+    <div>
+      <h4>Palette</h4>
+      <div class="swatches">
+        <div><i style="background:#ffb224"></i>Amber #FFB224</div>
+        <div><i style="background:#0b0e14"></i>Night #0B0E14</div>
+        <div><i style="background:#6ec6ff"></i>Sky #6EC6FF</div>
+        <div><i style="background:#f7f3ea"></i>Chalk #F7F3EA</div>
+        <div><i style="background:#ffd872"></i>Gold tier #FFD872</div>
+        <div><i style="background:#e5312b"></i>Live #E5312B</div>
       </div>
     </div>
     <div class="toggle"><span>Reduce motion</span><button class="sw2" id="rmtoggle" onclick="toggleRM()" aria-label="Reduce motion"></button></div>
@@ -662,9 +699,9 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
     <div class="phone"><div class="app" id="app"><canvas class="atmos" id="atmos-app"></canvas>
       <header class="topbar">
         <div class="clubtag"><div class="badge" id="tb-badge">HH</div><div><div class="n" id="tb-name">HighlightsHub</div><div class="s" id="tb-sub">Make every game count</div></div></div>
-        <div class="row"><span class="tag live" id="livetag" style="display:none">Live</span><button class="railbtn" onclick="toggleRail(true)">Demo</button><button class="avatar" onclick="go('hub')" aria-label="Your Hub">PT</button></div>
+        <div class="row"><span class="tag live" id="livetag" style="display:none">Live</span><button class="railbtn" onclick="toggleRail(true)">Demo</button><button class="avatar" onclick="go('hub')" aria-label="Your Hub">AA</button></div>
       </header>
-      <div class="ticker" aria-hidden="true"><div class="lab">Live</div><div class="run"><span><b>GOAL</b> Omar K. 12'<i>·</i><b>GOAL</b> Punit T. 27' nominated for Goal of the Week<i>·</i>Thursday 5s upload: <b>4 goals found</b><i>·</i>Voting closes Sunday<i>·</i>Omar K. climbs to <b>#1</b><i>·</i>Hat-trick hero unlocked by Sami R.<i>·</i></span></div></div>
+      <div class="ticker" aria-hidden="true"><div class="lab">Live</div><div class="run"><span><b>GOAL</b> Maan T. 12'<i>·</i><b>GOAL</b> Adam A. 27' nominated for Goal of the Week<i>·</i>Thursday 5s upload: <b>4 goals found</b><i>·</i>Voting closes Sunday<i>·</i>Maan T. climbs to <b>#1</b><i>·</i>Hat-trick hero unlocked by Sami R.<i>·</i></span></div></div>
       <div class="flash" id="flash"></div>
       <div class="toast" id="toast" role="status"></div>
 
@@ -676,6 +713,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
             <div class="horizon"><svg viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke-width="1.2"><line x1="200" y1="40" x2="-200" y2="300"/><line x1="200" y1="40" x2="80" y2="300"/><line x1="200" y1="40" x2="200" y2="300"/><line x1="200" y1="40" x2="320" y2="300"/><line x1="200" y1="40" x2="600" y2="300"/><path class="move" d="M-20 90H420"/><path class="move" d="M-20 140H420"/><path class="move" d="M-20 205H420"/><path class="move" d="M-20 290H420"/><ellipse cx="200" cy="150" rx="60" ry="18"/></g></svg></div>
             <h1 id="h1"><span data-w="Make"></span><br><span data-w="every"></span><br><span class="hl" data-w="game"></span><br><span data-w="count."></span></h1>
             <p>Upload the full match. We find every goal, clip it, auto-zoom the finish and drop it in the group chat before the showers run cold.</p>
+            <span class="note">filmed on a phone, propped on the fence. that's it.</span>
             <div class="row" style="margin-top:22px"><button class="btn primary" onclick="go('upload')">Upload a game</button><button class="btn ghost" onclick="document.getElementById('find').scrollIntoView({behavior:'smooth'})">Find your game</button></div>
           </div>
           <div class="strip" style="margin-top:28px">
@@ -686,7 +724,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 
           
           <div class="sec rv">
-            <div class="sec-h"><h2>Warm up</h2><span class="meta">Every 10 keepy-uppies = +50 XP</span></div>
+            <div class="sec-h"><h2>Warm up</h2><span class="meta hand">ten in a row = 50 XP</span></div>
             <div class="ku" id="ku">
               <canvas id="kucv" width="360" height="380" aria-label="Keepy-uppy. Tap the ball to keep it up." role="img"></canvas>
               <div class="hud"><div><span id="ku-score">0</span><small>Keepy-uppies</small></div><div class="r"><span id="ku-best">0</span><small>Best</small></div></div>
@@ -718,7 +756,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
                 <div class="rating"><div><div class="ovr">87</div><div class="pos">ST</div></div><div class="tier">Gold</div></div>
                 <div class="gotw"><i><svg data-ic="star"></svg></i><i><svg data-ic="star"></svg></i></div>
                 <div class="photo"></div>
-                <div class="plate"><div class="name">Punit T.</div>
+                <div class="plate"><div class="name">Adam A.</div>
                 <div class="club"><span class="badge xs">HH</span> <span class="clubname">HighlightsHub</span> · Season 3</div>
                 <div class="stats"><div><b>14</b><span>Goals</span></div><div><b>6</b><span>Assists</span></div><div><b>11</b><span>Games</span></div><div><b>2</b><span>GOTW</span></div></div></div>
               </div>
@@ -766,7 +804,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
             <div class="ov">
               <div class="lower3"><b id="l3-home">HH</b><span>3</span><i>2</i><span>Visitors</span></div>
               <button class="playbtn" onclick="togglePlay()" aria-label="Play"><svg id="playico" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></button>
-              <div class="row between" style="align-items:flex-end"><div class="lower3"><b id="goalmin">27'</b><span id="goalwho">Goal · Punit T.</span></div><span class="clock" id="clock">00:00 / 48:12</span></div>
+              <div class="row between" style="align-items:flex-end"><div class="lower3"><b id="goalmin">27'</b><span id="goalwho">Goal · Adam A.</span></div><span class="clock" id="clock">00:00 / 48:12</span></div>
             </div>
           </div>
           <div class="scrub" id="scrub">
@@ -778,13 +816,13 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
             </div>
             <div class="preview" id="preview"><div class="cap"><span id="pv-min">27'</span><em>zoom ×2.4</em></div></div>
           </div>
-          <p class="meta" style="margin-top:8px">Tap a marker to preview the auto-zoom frame. Yellow is the Goal of the Week.</p>
+          <p class="meta" style="margin-top:8px">Tap a marker to preview the auto-zoom frame. <span class="hand">blue one is the Goal of the Week</span></p>
 
           <div class="sec rv">
             <div class="sec-h"><h2>Goals</h2><span class="meta">1 untagged</span></div>
             <div id="timeline">
-              <div class="goal-row" data-g="0" onclick="selGoal(0)"><div class="min">12'</div><div class="sc">1–0</div><div class="who"><b>Omar K.</b> · assist <b>Sami R.</b></div></div>
-              <div class="goal-row on" data-g="1" onclick="selGoal(1)"><div class="min">27'</div><div class="sc">2–0</div><div class="who"><b>Punit T.</b> · assist <b>Omar K.</b></div><span class="tag gotw">GOTW</span></div>
+              <div class="goal-row" data-g="0" onclick="selGoal(0)"><div class="min">12'</div><div class="sc">1–0</div><div class="who"><b>Maan T.</b> · assist <b>Sami R.</b></div></div>
+              <div class="goal-row on" data-g="1" onclick="selGoal(1)"><div class="min">27'</div><div class="sc">2–0</div><div class="who"><b>Adam A.</b> · assist <b>Maan T.</b></div><span class="tag gotw">GOTW</span></div>
               <div class="goal-row" data-g="2" onclick="selGoal(2)"><div class="min">34'</div><div class="sc">2–1</div><div class="who">Visitors</div></div>
               <div class="goal-row" data-g="3" onclick="selGoal(3)"><div class="min">44'</div><div class="sc">3–1</div><div class="who untagged" id="g3who">Untagged. Who scored?</div></div>
             </div>
@@ -793,14 +831,14 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           <div class="sec rv">
             <div class="sec-h"><h2>Who played</h2><button class="link">Add a player</button></div>
             <div class="players">
-              <span class="chip on">Punit T.</span><span class="chip">Omar K.</span><span class="chip">Sami R.</span><span class="chip">Jake A.</span><span class="chip">Mo B.</span><span class="chip">Dan L.</span><span class="chip">+3 more</span>
+              <span class="chip on">Adam A.</span><span class="chip">Maan T.</span><span class="chip">Sami R.</span><span class="chip">Jake A.</span><span class="chip">Mo B.</span><span class="chip">Dan L.</span><span class="chip">+3 more</span>
             </div>
           </div>
 
           <div class="sec rv tagbox" id="tagbox">
             <span class="meta">44' · 3–1</span>
             <h3>Who scored?</h3>
-            <p>Tag it and it lands on your card, your stats and the leaderboard.</p>
+            <p>Tag it and it lands on your card, your stats and the leaderboard. <span class="hand" style="color:inherit">no VAR here.</span></p>
             <div class="grid2"><button class="btn main" id="scoredbtn" onclick="goalMoment()"><svg class="i" data-ic="ball"></svg>I scored this</button><button class="btn alt" onclick="assistMoment(event)"><svg class="i" data-ic="target"></svg>I assisted</button></div>
             <p class="meta" style="margin-top:12px">Not you? <a href="#" onclick="return false" style="color:inherit">Tag a mate instead</a></p>
           </div>
@@ -813,7 +851,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
               <button onclick="copyLink()"><svg class="i" data-ic="link"></svg>Copy link</button>
             </div>
             <div class="scroll-x" style="margin-top:14px">
-              <div class="story" id="story1"><div class="top"><div class="meta">Thursday 5s · Wk 12</div></div><div><div class="big">Punit<br>T.<br><em>27'</em></div></div><div><div class="meta">Goal of the week</div><div class="wm"><span class="clubname">HighlightsHub</span> · highlightshub.app</div></div></div>
+              <div class="story" id="story1"><div class="top"><div class="meta">Thursday 5s · Wk 12</div></div><div><div class="big">Adam<br>A.<br><em>27'</em></div></div><div><div class="meta">Goal of the week</div><div class="wm"><span class="clubname">HighlightsHub</span> · highlightshub.app</div></div></div>
               <div class="story ach"><div class="top"><div class="meta">Unlocked</div></div><div class="trophy"><svg class="i" data-ic="trophy"></svg></div><div><div class="big">Hat-trick<br><em>hero</em></div><div class="wm" style="margin-top:6px">highlightshub.app</div></div></div>
               <div class="story plain"><div class="top"><div class="meta">Week 12</div></div><div><div class="big">Climbed<br><em>3</em><br>places</div></div><div><div class="meta">Now #2 · Thursday 5s</div><div class="wm">highlightshub.app</div></div></div>
             </div>
@@ -823,13 +861,13 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 
         <!-- ================= 3. YOUR HUB ================= -->
         <section class="screen" id="s-hub">
-          <div class="row between" style="margin:18px 0 16px;align-items:flex-end"><div><h2 style="font-size:34px">Punit T.</h2><p class="sub">Your Hub · Season 3</p></div><button class="btn ghost sm" onclick="document.getElementById('mainpc').classList.toggle('flipped')">Flip card</button></div>
+          <div class="row between" style="margin:18px 0 16px;align-items:flex-end"><div><h2 style="font-size:34px">Adam A.</h2><p class="sub">Your Hub · Season 3</p></div><button class="btn ghost sm" onclick="document.getElementById('mainpc').classList.toggle('flipped')">Flip card</button></div>
           <div class="pc-wrap"><div class="pc" id="mainpc" data-tier="gold" onclick="this.classList.toggle('flipped')">
             <div class="face front"><div class="foil"></div><div class="glare"></div>
               <div class="rating"><div><div class="ovr" id="ovr">87</div><div class="pos">ST</div></div><div class="tier" id="tierlbl">Gold</div></div>
               <div class="gotw"><i><svg data-ic="star"></svg></i><i><svg data-ic="star"></svg></i></div>
               <div class="photo"></div>
-              <div class="plate"><div class="name" id="pcname">Punit T.</div>
+              <div class="plate"><div class="name" id="pcname">Adam A.</div>
               <div class="club"><span class="badge xs">HH</span> <span class="clubname">HighlightsHub</span> · Season 3</div>
               <div class="stats"><div><b id="pc-goals">14</b><span>Goals</span></div><div><b id="pc-ast">6</b><span>Assists</span></div><div><b>11</b><span>Games</span></div><div><b>2</b><span>GOTW</span></div></div></div>
               </div>
@@ -859,12 +897,12 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
             <div class="rows">
               <div><div class="t">Score in 3 straight games<small>One more on Thursday</small></div><div style="width:84px"><div class="pips"><i class="on"></i><i class="on"></i><i></i></div><div class="meta" style="text-align:right;margin-top:4px">2 of 3</div></div></div>
               <div><div class="t">Cast 10 votes<small>Worth 200 XP</small></div><div style="width:84px"><div class="bar"><i style="width:40%"></i></div><div class="meta" style="text-align:right;margin-top:4px">4 of 10</div></div></div>
-              <div><div class="t">Golden Boot pace<small>One behind Omar K.</small></div><div style="width:84px"><div class="bar"><i style="width:93%"></i></div><div class="meta" style="text-align:right;margin-top:4px">14 of 15</div></div></div>
+              <div><div class="t">Golden Boot pace<small>One behind Maan T.</small></div><div style="width:84px"><div class="bar"><i style="width:93%"></i></div><div class="meta" style="text-align:right;margin-top:4px">14 of 15</div></div></div>
             </div>
           </div>
 
           <div class="sec rv">
-            <div class="sec-h"><h2>Trophy cabinet</h2><span class="meta">6 of 11</span></div>
+            <div class="sec-h"><h2>Trophy cabinet</h2><span class="meta hand">6 of 11, keep going</span></div>
             <div class="cab" id="cab">
               <div class="tr"><svg class="i" data-ic="ball"></svg>First goal</div>
               <div class="tr"><svg class="i" data-ic="brace"></svg>Brace</div>
@@ -897,7 +935,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           <div style="margin:0 calc(-1*var(--gutter)) 0;padding:20px var(--gutter) 22px;background:var(--bg-2)">
             <div class="row between"><h2 style="font-size:22px">Thursday 5s · Week 12</h2><span class="meta">Thu 6 Nov</span></div>
             <div class="row between" style="margin-top:18px;align-items:center;gap:6px">
-              <div class="row"><div class="badge lg">HH</div><div><div class="display" style="font-size:20px;font-weight:800">Home</div><div class="meta">Punit, Omar, Sami +4</div></div></div>
+              <div class="row"><div class="badge lg">HH</div><div><div class="display" style="font-size:20px;font-weight:800">Home</div><div class="meta">Adam, Maan, Sami +4</div></div></div>
               <div class="num" style="font-size:56px;line-height:1;white-space:nowrap;flex:none">3<span style="color:var(--ink-3);font-weight:600;margin:0 6px">–</span>2</div>
               <div style="text-align:right"><div class="display" style="font-size:20px;font-weight:800">Visitors</div><div class="meta">Jake, Mo, Dan +4</div></div>
             </div>
@@ -906,8 +944,8 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           <div class="sec rv">
             <div class="sec-h"><h2>Reels</h2><a class="link" href="#reel" onclick="go('reel');return false">Watch all</a></div>
             <div class="scroll-x">
-              <div class="story sm" onclick="go('reel')"><div class="top"><div class="meta">12'</div></div><div class="big">Omar<br>K.</div><div class="meta">1–0</div></div>
-              <div class="story sm" onclick="go('reel')"><div class="top row between"><div class="meta">27'</div><span class="tag gotw">GOTW</span></div><div class="big">Punit<br>T.</div><div class="meta">2–0</div></div>
+              <div class="story sm" onclick="go('reel')"><div class="top"><div class="meta">12'</div></div><div class="big">Maan<br>T.</div><div class="meta">1–0</div></div>
+              <div class="story sm" onclick="go('reel')"><div class="top row between"><div class="meta">27'</div><span class="tag gotw">GOTW</span></div><div class="big">Adam<br>A.</div><div class="meta">2–0</div></div>
               <div class="story sm plain" onclick="go('reel')"><div class="top"><div class="meta">34'</div></div><div class="big">Visi-<br>tors</div><div class="meta">2–1</div></div>
               <div class="story sm plain" onclick="go('reel')" style="border:1px dashed var(--rule-2)"><div class="top"><div class="meta">44'</div></div><div class="big" style="color:var(--signal)">Tag<br>me</div><div class="meta">3–1</div></div>
             </div>
@@ -915,7 +953,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 
           <div class="sec rv">
             <div class="sec-h"><h2>Player of the week</h2></div>
-            <div class="spot"><div class="av">OK</div><div style="flex:1"><h3>Omar K.</h3><p class="meta">2 goals, 1 assist, climbed to #1</p></div><div class="rating">9.4</div></div>
+            <div class="spot"><div class="av">MT</div><div style="flex:1"><h3>Maan T.</h3><p class="meta">2 goals, 1 assist, climbed to #1</p></div><div class="rating">9.4</div></div>
           </div>
 
           <div class="sec rv">
@@ -924,8 +962,8 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
               <div class="hd"><span>#</span><span>Player</span><span style="text-align:center">G</span><span style="text-align:center">A</span><span style="text-align:center">XP</span></div>
               <div class="zone p"><i></i>Promotion · top 2 go up to Division 1</div>
               <div id="lbrows">
-                <div class="r" data-id="omar"><span class="rk">1</span><span class="nm"><span>Omar K.</span><span class="mv up"><svg class="i" data-ic="up"></svg>2</span></span><span class="v">15</span><span class="v">4</span><span class="v">2,410</span></div>
-                <div class="r me" data-id="me"><span class="rk">2</span><span class="nm"><span>Punit T.</span><span class="mv up"><svg class="i" data-ic="up"></svg>3</span></span><span class="v" id="lb-me-g">14</span><span class="v">6</span><span class="v" id="lb-me-xp">2,340</span></div>
+                <div class="r" data-id="omar"><span class="rk">1</span><span class="nm"><span>Maan T.</span><span class="mv up"><svg class="i" data-ic="up"></svg>2</span></span><span class="v">15</span><span class="v">4</span><span class="v">2,410</span></div>
+                <div class="r me" data-id="me"><span class="rk">2</span><span class="nm"><span>Adam A.</span><span class="mv up"><svg class="i" data-ic="up"></svg>3</span></span><span class="v" id="lb-me-g">14</span><span class="v">6</span><span class="v" id="lb-me-xp">2,340</span></div>
                 <div class="r" data-id="sami"><span class="rk">3</span><span class="nm"><span>Sami R.</span><span class="mv dn"><svg class="i" data-ic="down"></svg>1</span></span><span class="v">11</span><span class="v">9</span><span class="v">2,105</span></div>
                 <div class="r" data-id="jake"><span class="rk">4</span><span class="nm"><span>Jake A.</span><span class="mv eq">–</span></span><span class="v">9</span><span class="v">3</span><span class="v">1,720</span></div>
                 <div class="r" data-id="mo"><span class="rk">5</span><span class="nm"><span>Mo B.</span><span class="mv dn"><svg class="i" data-ic="down"></svg>2</span></span><span class="v">7</span><span class="v">5</span><span class="v">1,480</span></div>
@@ -937,16 +975,16 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           </div>
 
           <div class="sec rv">
-            <div class="sec-h"><h2>Goal of the week</h2><span class="meta">Swipe to vote · ends Sunday</span></div>
+            <div class="sec-h"><h2>Goal of the week</h2><span class="meta hand note sky">swipe · ends Sunday</span></div>
             <div class="vote" id="vote">
-              <div class="vcard" data-i="2"><div class="ov"><span class="tag" style="align-self:flex-start">Sunday League · R9</span><div><h3>Jake A. · 19'</h3><p class="meta">Volley from the edge of the D</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
-              <div class="vcard" data-i="1"><div class="ov"><span class="tag" style="align-self:flex-start">Thursday 5s · Wk 12</span><div><h3>Omar K. · 12'</h3><p class="meta">Chipped the keeper from the halfway line</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
-              <div class="vcard" data-i="0"><div class="ov"><span class="tag" style="align-self:flex-start">Thursday 5s · Wk 12</span><div><h3>Punit T. · 27'</h3><p class="meta">Top bins from 20 yards</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
+              <div class="vcard" data-i="2"><div class="ov"><span class="tag" style="align-self:flex-start">Sunday League · R9</span><div><h3>Jake A. · 19'</h3><p class="hand">volley from the edge of the D</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
+              <div class="vcard" data-i="1"><div class="ov"><span class="tag" style="align-self:flex-start">Thursday 5s · Wk 12</span><div><h3>Maan T. · 12'</h3><p class="hand">chipped the keeper from halfway</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
+              <div class="vcard" data-i="0"><div class="ov"><span class="tag" style="align-self:flex-start">Thursday 5s · Wk 12</span><div><h3>Adam A. · 27'</h3><p class="hand">top bins from 20 yards</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
             </div>
             <div class="grid2" style="margin-top:12px"><button class="btn ghost" onclick="swipe(false)">Nah</button><button class="btn primary" onclick="swipe(true)">That one</button></div>
             <div class="vbars" id="vbars">
-              <div class="vbar"><div>Punit T. · 27'<div class="b"><i data-w="58"></i></div></div><b>58%</b></div>
-              <div class="vbar"><div>Omar K. · 12'<div class="b"><i data-w="29"></i></div></div><b>29%</b></div>
+              <div class="vbar"><div>Adam A. · 27'<div class="b"><i data-w="58"></i></div></div><b>58%</b></div>
+              <div class="vbar"><div>Maan T. · 12'<div class="b"><i data-w="29"></i></div></div><b>29%</b></div>
               <div class="vbar"><div>Jake A. · 19'<div class="b"><i data-w="13"></i></div></div><b>13%</b></div>
             </div>
             <p class="meta" style="margin-top:10px">Weekly winners go into the Goal of the Month bracket.</p>
@@ -1013,8 +1051,8 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           <div class="sec rv">
             <div class="sec-h"><h2>Branding</h2><span class="meta">Live preview</span></div>
             <div class="colors">
-              <label>Primary<input type="color" id="c-primary" value="#49e87a" oninput="setClubColors()"></label>
-              <label>Secondary<input type="color" id="c-secondary" value="#f6f4ee" oninput="setClubColors()"></label>
+              <label>Primary<input type="color" id="c-primary" value="#ffb224" oninput="setClubColors()"></label>
+              <label>Secondary<input type="color" id="c-secondary" value="#f7f3ea" oninput="setClubColors()"></label>
               <label>Club name<input class="input" id="c-name" value="HighlightsHub FC" oninput="setClubName(this.value)"></label>
             </div>
             <p class="meta" style="margin-top:12px">Badge, colours and name flow to every header, reel lower-third, story card and leaderboard. One config skins the whole product.</p>
@@ -1031,7 +1069,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 
           <div class="sec rv">
             <div class="sec-h"><h2>Organisers</h2><button class="link">Invite</button></div>
-            <div class="row wrap"><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">PT</span>Punit · Owner</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">OK</span>Omar · Thursdays</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">SR</span>Sami · Sundays</span></div>
+            <div class="row wrap"><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">AA</span>Adam · Owner</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">MT</span>Maan · Thursdays</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">SR</span>Sami · Sundays</span></div>
           </div>
 
           <div class="sec rv">
@@ -1048,8 +1086,8 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
           <div class="sec rv">
             <div class="sec-h"><h2>Roster</h2><span class="meta">42 players</span></div>
             <div class="roster">
-              <div><div class="avatar gold">PT</div>Punit T.</div>
-              <div><div class="avatar gold">OK</div>Omar K.</div>
+              <div><div class="avatar gold">AA</div>Adam A.</div>
+              <div><div class="avatar gold">MT</div>Maan T.</div>
               <div><div class="avatar silver">SR</div>Sami R.</div>
               <div><div class="avatar silver">JA</div>Jake A.</div>
               <div><div class="avatar bronze">MB</div>Mo B.</div>
@@ -1136,6 +1174,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
         <button data-tab="game" onclick="go('game')"><svg class="i" data-ic="table"></svg>Game</button>
         <button data-tab="more" onclick="openSheet()"><svg class="i" data-ic="more"></svg>More</button>
       </nav>
+      <div class="walk" id="walk"><span class="n" id="wk-n">1</span><div class="t"><b id="wk-b"></b><small id="wk-s"></small></div><button class="x" onclick="walkStop()">End</button><button onclick="walkNext()" id="wk-next">Next</button></div>
       <div class="appscrim" id="appscrim" onclick="closeSheet()"></div>
       <div class="sheet" id="sheet"><div class="handle"></div>
         <button class="opt" onclick="go('upload')"><span class="ic"><svg class="i" data-ic="camera"></svg></span>Upload a game<small>Organiser</small></button>
@@ -1148,7 +1187,7 @@ canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 </div>
 
 <canvas id="confetti"></canvas>
-<div class="takeover" id="takeover" onclick="closeTakeover()"><div class="rays"></div><div class="inner"><div class="ic"><svg class="i" data-ic="trophy"></svg></div><p class="meta" style="color:var(--gold1);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Trophy unlocked</p><h2 id="tk-h">Hat-trick hero</h2><p id="tk-p">Three in one game. Unreal.</p><div class="row" style="justify-content:center"><button class="btn primary" onclick="event.stopPropagation();closeTakeover();toast('Achievement card ready, 9:16')">Share the card</button><button class="btn ghost" onclick="closeTakeover()">To the cabinet</button></div></div></div>
+<div class="takeover" id="takeover" onclick="closeTakeover()"><div class="rays"></div><div class="inner"><div class="ic"><svg class="i" data-ic="trophy"></svg></div><p class="meta" style="color:var(--gold1);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Trophy unlocked</p><h2 id="tk-h">Hat-trick hero</h2><p id="tk-p" class="hand" style="font-size:28px">Three in one game. Unreal.</p><div class="row" style="justify-content:center"><button class="btn primary" onclick="event.stopPropagation();closeTakeover();toast('Achievement card ready, 9:16')">Share the card</button><button class="btn ghost" onclick="closeTakeover()">To the cabinet</button></div></div></div>
 
 <script>
 /* ---------- Icon set: one stroke, one weight, drawn ---------- */
@@ -1198,7 +1237,7 @@ document.querySelectorAll('svg[data-ic]').forEach(s=>{s.setAttribute('viewBox','
 
 /* ---------- Player silhouette + pitch scenes (vector geometry, not pictures) ---------- */
 const PLAYER_SVG=`<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="34" r="18" fill="#fff" fill-opacity=".92"/><path d="M22 112c0-26 16-40 38-40s38 14 38 40z" fill="#fff" fill-opacity=".92"/><path d="M44 74l16 12 16-12" fill="none" stroke="var(--club-primary)" stroke-width="5" stroke-linecap="round"/><text x="60" y="106" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="24" fill="var(--club-primary)">9</text></svg>`;
-const pitch=(w,h,zoom)=>`<svg class="pitch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123d22"/><stop offset="1" stop-color="#071a0e"/></linearGradient><linearGradient id="fl${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g${w})"/><g fill="#fff" opacity=".06">${[...Array(8)].map((_,i)=>`<rect x="${i*w/8}" y="0" width="${w/16}" height="${h}"/>`).join('')}</g><rect width="${w}" height="${h}" fill="url(#fl${w})"/><g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"><rect x="${w*.06}" y="${h*.1}" width="${w*.88}" height="${h*.8}"/><line x1="${w/2}" y1="${h*.1}" x2="${w/2}" y2="${h*.9}"/><circle cx="${w/2}" cy="${h/2}" r="${h*.14}"/><rect x="${w*.06}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/><rect x="${w*.82}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/></g>${zoom?`<rect x="${w*.62}" y="${h*.28}" width="${w*.3}" height="${h*.44}" fill="none" stroke="#49e87a" stroke-width="2" stroke-dasharray="6 4" rx="6"/>`:''}<circle cx="${w*.42}" cy="${h*.52}" r="${h*.03}" fill="#fff"><animate attributeName="cx" values="${w*.42};${w*.86}" dur="1.6s" begin="indefinite" fill="freeze" id="ballanim${w}"/><animate attributeName="cy" values="${h*.52};${h*.46}" dur="1.6s" begin="indefinite" fill="freeze"/></circle><circle cx="${w*.3}" cy="${h*.6}" r="${h*.045}" fill="var(--club-primary)"/><circle cx="${w*.74}" cy="${h*.4}" r="${h*.045}" fill="#e6e6e6"/><circle cx="${w*.5}" cy="${h*.35}" r="${h*.045}" fill="var(--club-primary)"/></svg>`;
+const pitch=(w,h,zoom)=>`<svg class="pitch" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123d22"/><stop offset="1" stop-color="#071a0e"/></linearGradient><linearGradient id="fl${w}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g${w})"/><g fill="#fff" opacity=".06">${[...Array(8)].map((_,i)=>`<rect x="${i*w/8}" y="0" width="${w/16}" height="${h}"/>`).join('')}</g><rect width="${w}" height="${h}" fill="url(#fl${w})"/><g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"><rect x="${w*.06}" y="${h*.1}" width="${w*.88}" height="${h*.8}"/><line x1="${w/2}" y1="${h*.1}" x2="${w/2}" y2="${h*.9}"/><circle cx="${w/2}" cy="${h/2}" r="${h*.14}"/><rect x="${w*.06}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/><rect x="${w*.82}" y="${h*.3}" width="${w*.12}" height="${h*.4}"/></g>${zoom?`<rect x="${w*.62}" y="${h*.28}" width="${w*.3}" height="${h*.44}" fill="none" stroke="#ffb224" stroke-width="2" stroke-dasharray="6 4" rx="6"/>`:''}<circle cx="${w*.42}" cy="${h*.52}" r="${h*.03}" fill="#fff"><animate attributeName="cx" values="${w*.42};${w*.86}" dur="1.6s" begin="indefinite" fill="freeze" id="ballanim${w}"/><animate attributeName="cy" values="${h*.52};${h*.46}" dur="1.6s" begin="indefinite" fill="freeze"/></circle><circle cx="${w*.3}" cy="${h*.6}" r="${h*.045}" fill="var(--club-primary)"/><circle cx="${w*.74}" cy="${h*.4}" r="${h*.045}" fill="#e6e6e6"/><circle cx="${w*.5}" cy="${h*.35}" r="${h*.045}" fill="var(--club-primary)"/></svg>`;
 document.querySelectorAll('.photo').forEach(e=>e.innerHTML=PLAYER_SVG);
 document.getElementById('player').insertAdjacentHTML('afterbegin',pitch(640,400,true));
 document.getElementById('preview').insertAdjacentHTML('afterbegin',pitch(280,160,true));
@@ -1207,10 +1246,12 @@ document.querySelectorAll('.vcard').forEach(e=>e.insertAdjacentHTML('afterbegin'
 
 /* ---------- Skins: one config skins the product ---------- */
 const SKINS={
-  hh:{name:'HighlightsHub',short:'HH',p:'#49e87a',s:'#f6f4ee',club:'HighlightsHub FC',sub:'Make every game count'},
+  hh:{name:'HighlightsHub',short:'HH',p:'#ffb224',s:'#f7f3ea',club:'HighlightsHub FC',sub:'Make every game count'},
   marina:{name:'Marina FC',short:'MFC',p:'#8a2243',s:'#8fd3ff',club:'Marina FC',sub:'Est. 2019 · Dubai Marina'},
   quoz:{name:'Al Quoz United',short:'AQU',p:'#e02424',s:'#ffd166',club:'Al Quoz United',sub:'7-a-side · Al Quoz'},
-  rovers:{name:'Jumeirah Rovers',short:'JR',p:'#1d5bff',s:'#f6f4ee',club:'Jumeirah Rovers',sub:'Sunday League · Div 2'}
+  rovers:{name:'Jumeirah Rovers',short:'JR',p:'#1d5bff',s:'#f7f3ea',club:'Jumeirah Rovers',sub:'Sunday League · Div 2'},
+  nakheel:{name:'Al Nakheel SC',short:'ANS',p:'#0e4c92',s:'#5fd3ff',club:'Al Nakheel SC',sub:'7-a-side · Palm'},
+  northgate:{name:'Northgate Utd',short:'NGU',p:'#e8e2d0',s:'#1a1200',club:'Northgate Utd',sub:'Sunday League · Div 1'}
 };
 function inkFor(hex){const [r,g,b]=[1,3,5].map(i=>parseInt(hex.substr(i,2),16)/255).map(c=>c<=.03928?c/12.92:Math.pow((c+.055)/1.055,2.4));const L=.2126*r+.7152*g+.0722*b;return (L+.05)/(0.0+.05)>(1.05)/(L+.05)?'#06130b':'#ffffff'}
 function applySkin(k){
@@ -1279,8 +1320,8 @@ function goalMoment(){
   const fl=document.getElementById('flash');fl.classList.remove('on');void fl.offsetWidth;fl.classList.add('on');
   goals++;xp+=120;
   b.innerHTML='Tagged · +120 XP';b.classList.add('bump');
-  document.getElementById('g3who').innerHTML='<b>Punit T.</b> · tap to add the assist';document.getElementById('g3who').classList.remove('untagged');
-  document.getElementById('goalmin').textContent="44'";document.getElementById('goalwho').textContent='Goal · Punit T.';
+  document.getElementById('g3who').innerHTML='<b>Adam A.</b> · tap to add the assist';document.getElementById('g3who').classList.remove('untagged');
+  document.getElementById('goalmin').textContent="44'";document.getElementById('goalwho').textContent='Goal · Adam A.';
   ['pc-goals','pc-goals2','st-goals','lb-me-g'].forEach(id=>roll(document.getElementById(id),goals));
   roll(document.getElementById('xpnow'),xp);roll(document.getElementById('lb-me-xp'),xp);
   document.getElementById('xpbar').dataset.w=Math.min(100,Math.round(xp/2600*100));
@@ -1295,7 +1336,7 @@ let playing=false,pos=0,pt;
 function togglePlay(){playing=!playing;document.getElementById('playico').innerHTML=playing?'<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>':'<path d="M7 4l13 8-13 8z"/>';if(playing){const a=document.getElementById('ballanim640');if(a&&!rm)a.beginElement();pt=setInterval(()=>{pos=(pos+.4)%100;document.getElementById('fill').style.width=pos+'%';const s=Math.round(pos/100*2892);document.getElementById('clock').textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')} / 48:12`},100)}else clearInterval(pt)}
 const scrub=document.getElementById('scrub'),pv=document.getElementById('preview');
 scrub.querySelectorAll('.mk').forEach(m=>{const show=()=>{pv.style.left=m.style.left;document.getElementById('pv-min').textContent=m.dataset.min;pv.classList.add('on');m.classList.add('on')};const hide=()=>{pv.classList.remove('on');m.classList.remove('on')};m.addEventListener('mouseenter',show);m.addEventListener('mouseleave',hide);m.addEventListener('click',e=>{e.stopPropagation();show();selGoal(+m.dataset.g);pos=parseFloat(m.style.left);document.getElementById('fill').style.width=pos+'%';setTimeout(hide,1400)})});
-function selGoal(g){document.querySelectorAll('.goal-row').forEach(r=>r.classList.toggle('on',+r.dataset.g===g));const mins=["12'","27'","34'","44'"],who=['Goal · Omar K.','Goal · Punit T.','Goal · Visitors',scored?'Goal · Punit T.':'Goal · untagged'];document.getElementById('goalmin').textContent=mins[g];document.getElementById('goalwho').textContent=who[g]}
+function selGoal(g){document.querySelectorAll('.goal-row').forEach(r=>r.classList.toggle('on',+r.dataset.g===g));const mins=["12'","27'","34'","44'"],who=['Goal · Maan T.','Goal · Adam A.','Goal · Visitors',scored?'Goal · Adam A.':'Goal · untagged'];document.getElementById('goalmin').textContent=mins[g];document.getElementById('goalwho').textContent=who[g]}
 
 /* ---------- Leaderboard: simulate a week, show rank-change arrows ---------- */
 function shuffleRanks(){
@@ -1350,7 +1391,7 @@ function atmos(cv,opts){
   const o=Object.assign({n:70,beams:true,alpha:1},opts||{});
   function size(){const r=cv.parentElement.getBoundingClientRect();W=cv.width=Math.max(1,r.width*Math.min(2,devicePixelRatio));H=cv.height=Math.max(1,r.height*Math.min(2,devicePixelRatio));ctx.setTransform(Math.min(2,devicePixelRatio),0,0,Math.min(2,devicePixelRatio),0,0);W=r.width;H=r.height;motes=[...Array(o.n)].map(()=>({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.15+Math.random()*.45,p:Math.random()*Math.PI*2,a:.25+Math.random()*.6}))}
   size();new ResizeObserver(size).observe(cv.parentElement);
-  let col='#49e87a',lastc=0;
+  let col='#ffb224',lastc=0;
   function frame(){
     t+=1;if(t-lastc>60){col=getComputedStyle(document.documentElement).getPropertyValue('--club-primary').trim()||col;lastc=t}
     ctx.clearRect(0,0,W,H);
@@ -1389,11 +1430,11 @@ document.querySelectorAll('.pc-wrap').forEach(w=>{
   const cv=document.getElementById('kucv');if(!cv)return;const ctx=cv.getContext('2d');const W=cv.width,H=cv.height;
   const sc=document.getElementById('ku-score'),bs=document.getElementById('ku-best'),ov=document.getElementById('ku-ov'),ti=document.getElementById('ku-title'),tx=document.getElementById('ku-text'),st=document.getElementById('ku-start'),pop=document.getElementById('ku-pop');
   let best=0;try{best=+localStorage.getItem('hh_ku_best')||0}catch(e){}bs.textContent=best;
-  let ball={x:W/2,y:H*.4,vx:0,vy:0,r:28,rot:0},score=0,run=false,raf,parts=[],col='#49e87a';
+  let ball={x:W/2,y:H*.4,vx:0,vy:0,r:28,rot:0},score=0,run=false,raf,parts=[],col='#ffb224';
   function draw(){
     ctx.clearRect(0,0,W,H);
     // pitch floor
-    const g=ctx.createLinearGradient(0,H*.7,0,H);g.addColorStop(0,'rgba(73,232,122,0)');g.addColorStop(1,col+'55');ctx.fillStyle=g;ctx.fillRect(0,H*.7,W,H*.3);
+    const g=ctx.createLinearGradient(0,H*.7,0,H);g.addColorStop(0,'rgba(255,178,36,0)');g.addColorStop(1,col+'55');ctx.fillStyle=g;ctx.fillRect(0,H*.7,W,H*.3);
     ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(W/2,H*.86,90,16,0,0,Math.PI*2);ctx.stroke();
     // shadow
     const sh=Math.max(.2,1-(H*.86-ball.y)/H);ctx.fillStyle=`rgba(0,0,0,${.35*sh})`;ctx.beginPath();ctx.ellipse(ball.x,H*.86,ball.r*sh*1.1,ball.r*sh*.35,0,0,Math.PI*2);ctx.fill();
@@ -1411,6 +1452,21 @@ document.querySelectorAll('.pc-wrap').forEach(w=>{
   cv.addEventListener('pointerdown',e=>{if(!run)return;const r=cv.getBoundingClientRect();const x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;const d=Math.hypot(x-ball.x,y-ball.y);if(d<ball.r*1.8){score++;sc.textContent=score;ball.vy=-(9+Math.random()*2);ball.vx=(ball.x-x)*.25+(Math.random()-.5)*2;for(let i=0;i<14;i++)parts.push({x:ball.x,y:ball.y,vx:(Math.random()-.5)*6,vy:-Math.random()*5,l:30,c:i%2?col:'#f6f4ee'});if(score%10===0){xp+=50;roll(document.getElementById('xpnow'),xp);pop.classList.remove('go');void pop.offsetWidth;pop.classList.add('go');toast(`+50 XP · ${score} in a row`)}}});
   draw();
 })();
+
+/* ---------- Adam walkthrough: six steps, each fires a real moment ---------- */
+const WALK=[
+  {b:'Organiser uploads a match',s:'Pitch-scan finds the goals, no progress bar',go:'upload',fn:()=>setTimeout(startScan,500)},
+  {b:'A player tags the goal',s:'Tap "I scored this" on the 44\' goal',go:'reel',fn:()=>setTimeout(()=>{document.getElementById('tagbox').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'})},400)},
+  {b:'The card updates',s:'Goals roll up, XP fills, card flips',go:'hub',fn:()=>setTimeout(()=>{if(!scored)goalMoment();},600)},
+  {b:'Trophy unlocks',s:'Full-screen reveal, then into the cabinet',go:'hub',fn:()=>setTimeout(()=>unlockTrophy('Hat-trick hero','Three in one game. Unreal.'),500)},
+  {b:'Leaderboard reorders',s:'Rank arrows, promotion and relegation zones',go:'game',fn:()=>setTimeout(()=>{document.querySelector('#lbrows').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});setTimeout(shuffleRanks,700)},400)},
+  {b:'Vote, then share the story card',s:'Swipe to vote, 9:16 card for the group chat',go:'game',fn:()=>setTimeout(()=>{document.getElementById('vote').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});setTimeout(()=>swipe(true),900)},400)}
+];
+let wi=-1;
+function walkShow(){const w=WALK[wi];document.getElementById('wk-n').textContent=wi+1;document.getElementById('wk-b').textContent=w.b;document.getElementById('wk-s').textContent=w.s;document.getElementById('wk-next').textContent=wi===WALK.length-1?'Finish':'Next';document.getElementById('walk').classList.add('on');go(w.go);w.fn&&w.fn()}
+function walkStart(){wi=0;walkShow()}
+function walkNext(){if(wi>=WALK.length-1){walkStop();go('reel');setTimeout(()=>document.querySelector('#s-reel .share').scrollIntoView({behavior:rm?'auto':'smooth',block:'center'}),400);toast('That is the loop. Film, upload, tag, share.');return}wi++;walkShow()}
+function walkStop(){wi=-1;document.getElementById('walk').classList.remove('on')}
 </script>
 </body>
 </html>
