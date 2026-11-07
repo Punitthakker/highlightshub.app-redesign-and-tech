@@ -459,6 +459,158 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 /* ---------- REDUCED MOTION ---------- */
 @media (prefers-reduced-motion:reduce){.pc .foil{animation:none!important}.screen{animation:none}}
 .rm *,.rm *::before,.rm *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+
+/* =====================================================================
+   V2 · FLOODLIT. Atmosphere, depth, glow and play layered over the
+   structure above. The tokens below override the flat v1 surface.
+   ===================================================================== */
+:root{
+  --glow:0 0 0 1px rgba(73,232,122,.22),0 12px 34px -8px rgba(73,232,122,.55);
+  --glow-club:0 0 0 1px color-mix(in srgb,var(--club-primary) 30%,transparent),0 14px 36px -10px color-mix(in srgb,var(--club-primary) 70%,transparent);
+  --lift:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  --lift-line:1px solid rgba(255,255,255,.09);
+  --lift-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 48px -22px rgba(0,0,0,.95);
+  --display-it:italic;
+}
+body{background:#030406}
+.stage{background:radial-gradient(900px 600px at 50% -10%,rgba(73,232,122,.14),transparent 60%),#030406}
+.stage .beam{display:none}
+canvas.atmos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.stage>canvas.atmos{z-index:0}
+.phone{z-index:1;box-shadow:0 60px 120px -30px rgba(0,0,0,.95),0 0 80px -20px color-mix(in srgb,var(--club-primary) 35%,transparent)}
+.app{background:#05070a}
+.topbar,.view,.tabbar,.sheet,.appscrim,.toast,.flash{z-index:auto}
+.topbar{position:relative;z-index:5;background:linear-gradient(180deg,rgba(5,7,10,.9),rgba(5,7,10,.5));backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.07)}
+.view{z-index:1}
+.tabbar{z-index:6;background:linear-gradient(transparent,rgba(5,7,10,.92) 30%)}
+.tabbar button.on{position:relative}
+.tabbar button.on::after{content:"";position:absolute;top:-2px;width:18px;height:3px;border-radius:3px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.tabbar button svg{filter:drop-shadow(0 0 0 transparent);transition:filter .3s}
+.tabbar button.on svg{filter:drop-shadow(0 0 8px rgba(73,232,122,.7))}
+
+/* ticker */
+.ticker{position:relative;z-index:4;overflow:hidden;height:30px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:600;color:var(--ink-2);display:flex;align-items:center}
+.ticker .lab{flex:none;padding:0 12px;height:100%;display:flex;align-items:center;background:var(--club-primary);color:var(--club-ink);font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ticker .run{flex:1;overflow:hidden;white-space:nowrap}
+.ticker .run span{display:inline-block;padding-left:100%;animation:ticker 28s linear infinite}
+.ticker .run b{color:var(--accent);font-weight:700}
+.ticker .run i{font-style:normal;color:var(--ink-3);margin:0 14px}
+@keyframes ticker{to{transform:translateX(-100%)}}
+
+/* depth on surfaces */
+.panel,.share button,.tr,.role,.empty,.drop,.vcard,.player,.scan,.story,.sheet,.lb,.table,.rows,.steps-l,.parts,.faq,.steps,.spot,.price.feat,.colors,.otp input,.roster .avatar,.chip,.seg,.input{background:var(--lift);border:var(--lift-line);box-shadow:var(--lift-shadow)}
+.panel,.lb,.table,.rows,.steps-l,.parts,.faq,.steps,.spot,.colors{border-radius:var(--r-lg);padding:6px 16px}
+.spot{padding:16px}
+.colors{padding:16px}
+.price.feat{border:var(--lift-line);box-shadow:var(--lift-shadow),var(--glow)}
+.rows>*,.lb .r,.table .r,.steps-l .st,.parts .p,.faq details,.step,.goal-row,.check{border-bottom-color:rgba(255,255,255,.07)}
+.lb .hd{padding-top:12px}
+.lb .r.me{margin:0 -16px;padding-left:16px;padding-right:16px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%);box-shadow:inset 3px 0 0 var(--accent)}
+.lb .zone{margin:0 -16px;padding-left:16px;padding-right:16px}
+.chip{backdrop-filter:blur(6px)}
+.chip.on{background:var(--ink-1);box-shadow:0 8px 20px -8px rgba(255,255,255,.4)}
+.seg{padding:3px}
+.seg button.on{box-shadow:0 6px 16px -6px rgba(0,0,0,.8)}
+.input{box-shadow:var(--lift-shadow)}
+.input:focus{box-shadow:var(--lift-shadow),var(--glow);background:rgba(5,7,10,.6)}
+.tr{box-shadow:var(--lift-shadow);transition:transform .25s var(--out),box-shadow .25s}
+.tr:not(.locked):hover{transform:translateY(-3px);box-shadow:var(--lift-shadow),0 0 24px -6px rgba(255,216,114,.5)}
+.tr:not(.locked) svg{filter:drop-shadow(0 0 8px rgba(255,216,114,.5))}
+.tr.new{box-shadow:0 0 0 1px var(--gold1),0 0 40px -4px var(--gold1)}
+.share button:hover{transform:translateY(-2px);box-shadow:var(--lift-shadow),var(--glow)}
+.share button{transition:transform .2s var(--out),box-shadow .2s}
+.share button svg{filter:drop-shadow(0 0 8px rgba(73,232,122,.6))}
+.role.on{background:linear-gradient(180deg,#fff,#e9e6de);box-shadow:0 20px 40px -18px rgba(255,255,255,.5)}
+.story{box-shadow:0 20px 40px -16px rgba(0,0,0,.9);transition:transform .25s var(--out)}
+.story:hover{transform:translateY(-4px)}
+.player{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08),0 0 60px -20px color-mix(in srgb,var(--club-primary) 60%,transparent)}
+.scan{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.08)}
+.scan.go{box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(73,232,122,.5),0 0 60px -10px rgba(73,232,122,.6)}
+.vcard{background:#05070a;box-shadow:0 30px 60px -24px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.1)}
+
+/* buttons */
+.btn.primary{background:linear-gradient(180deg,#7dffa6,#3fdc70);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 28px -8px rgba(73,232,122,.7)}
+.btn.primary:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 16px 36px -8px rgba(73,232,122,.9);filter:brightness(1.05)}
+.btn.club{background:linear-gradient(180deg,color-mix(in srgb,var(--club-primary) 85%,#fff),var(--club-primary));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),var(--glow-club)}
+.btn.ghost{background:var(--lift);border:var(--lift-line);box-shadow:var(--lift-shadow)}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-130%);transition:transform .7s var(--out)}
+.btn:hover::after{transform:translateX(130%)}
+.tagbox{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 80px -20px var(--club-primary)}
+.tagbox .btn.main{box-shadow:0 14px 30px -10px rgba(0,0,0,.8)}
+.closing{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 -40px 120px -40px var(--club-primary)}
+.clubhero{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 30px 80px -30px var(--club-primary)}
+.badge{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 16px -6px color-mix(in srgb,var(--club-primary) 80%,transparent)}
+.avatar{box-shadow:var(--lift-shadow);background:var(--lift);border:var(--lift-line)}
+.tag.live{box-shadow:0 0 16px rgba(229,49,43,.7)}
+.tag.gotw{box-shadow:0 0 14px rgba(255,213,74,.5)}
+.strip{border-color:rgba(255,255,255,.1)}
+.strip .v.ac{text-shadow:0 0 26px rgba(73,232,122,.6)}
+.strip .v.sg{text-shadow:0 0 26px rgba(255,213,74,.6)}
+.goal-row .min{text-shadow:0 0 18px rgba(73,232,122,.5)}
+.spot .rating{text-shadow:0 0 24px rgba(255,213,74,.6)}
+.scrub .mk{box-shadow:0 0 12px color-mix(in srgb,var(--club-primary) 80%,transparent)}
+.scrub .mk.gotw{box-shadow:0 0 12px rgba(255,213,74,.9)}
+.scrub .fill{background:linear-gradient(90deg,var(--accent),#fff);box-shadow:0 0 10px rgba(73,232,122,.6)}
+.bar i{box-shadow:0 0 12px rgba(73,232,122,.6)}
+.pips i.on{box-shadow:0 0 8px rgba(73,232,122,.6)}
+.lower3{box-shadow:0 10px 24px -8px rgba(0,0,0,.9)}
+.xp .lvl{text-shadow:0 0 16px rgba(255,255,255,.4)}
+.sec-h{border-bottom:0;position:relative;padding-bottom:12px}
+.sec-h::after{content:"";position:absolute;left:0;bottom:0;width:38px;height:3px;border-radius:3px;background:var(--club-primary);box-shadow:0 0 12px var(--club-primary)}
+
+/* hero */
+.hero{padding-top:28px}
+.hero .flood{display:none}
+.hero h1{font-style:var(--display-it);font-size:78px;letter-spacing:-.01em;text-shadow:0 10px 40px rgba(0,0,0,.6)}
+.hero h1 .hl{box-shadow:0 0 40px -4px var(--club-primary),inset 0 1px 0 rgba(255,255,255,.4);transform:skewX(-6deg);padding:0 .12em}
+.hero h1 .ch{display:inline-block;opacity:0;transform:translateY(.4em) rotateX(60deg);animation:chin .7s var(--out) forwards}
+@keyframes chin{to{opacity:1;transform:none}}
+.horizon{position:absolute;left:-20px;right:-20px;top:-10px;height:300px;z-index:-1;overflow:hidden;pointer-events:none;mask-image:linear-gradient(#000 40%,transparent);-webkit-mask-image:linear-gradient(#000 40%,transparent)}
+.horizon svg{width:100%;height:100%}
+.horizon line,.horizon path{stroke:var(--club-primary);stroke-opacity:.28}
+.horizon .move{stroke-dasharray:6 10;animation:dash 2.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.screen{position:relative}
+
+/* reveals */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--out),transform .8s var(--out)}
+.rv.in{opacity:1;transform:none}
+
+/* player card: tilt + glare */
+.pc-wrap{transform-style:preserve-3d;transition:transform .5s var(--out);will-change:transform}
+.pc .face.front{box-shadow:0 40px 70px -30px rgba(0,0,0,1),0 0 0 1px rgba(255,255,255,.25),0 0 60px -20px var(--t1)}
+.pc .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(240px 240px at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.35),transparent 60%);mix-blend-mode:overlay;opacity:.9}
+.pc .ovr{text-shadow:0 2px 0 rgba(255,255,255,.35)}
+.pc .plate{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.pc .stats b{text-shadow:0 0 14px rgba(255,255,255,.35)}
+
+/* keepy-uppy */
+.ku{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--lift);border:var(--lift-line);box-shadow:var(--lift-shadow);aspect-ratio:1/1.05}
+.ku canvas{width:100%;height:100%;display:block;touch-action:manipulation}
+.ku .hud{z-index:2;position:absolute;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;font-family:var(--display);font-weight:900;font-size:30px;pointer-events:none;text-shadow:0 0 20px rgba(0,0,0,.8)}
+.ku .hud small{display:block;font-family:var(--body);font-weight:600;font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.ku .hud .r{text-align:right}
+.ku .ov{z-index:1;position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(5,7,10,.55);backdrop-filter:blur(4px);padding:20px}
+.ku .ov h3{font-size:40px;font-style:italic}
+.ku .ov p{color:var(--ink-2);margin:6px 0 16px;font-size:14px}
+.ku .ov.hide{display:none}
+.ku .pop{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:900;font-style:italic;font-size:44px;color:var(--accent);text-shadow:0 0 30px rgba(73,232,122,.9);opacity:0;pointer-events:none}
+.ku .pop.go{animation:popup .7s var(--out)}
+@keyframes popup{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}30%{opacity:1;transform:translate(-50%,-60%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-90%) scale(1)}}
+
+/* takeover */
+.takeover{background:radial-gradient(600px 500px at 50% 35%,rgba(255,216,114,.22),rgba(3,4,6,.97) 60%)}
+.takeover .ic svg{filter:drop-shadow(0 0 40px rgba(255,216,114,.8))}
+.takeover h2{text-shadow:0 0 40px rgba(255,216,114,.6)}
+.takeover .rays{position:absolute;inset:-60%;background:conic-gradient(from 0deg,transparent 0 12deg,rgba(255,216,114,.07) 12deg 20deg);animation:spin 30s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.rm .rv{opacity:1;transform:none}
+.rm .hero h1 .ch{opacity:1;transform:none;animation:none}
+.rm .ticker .run span{animation:none;padding-left:0}
+.rm .horizon .move{animation:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.hero h1 .ch{opacity:1;transform:none;animation:none}.ticker .run span{animation:none;padding-left:0}}
 </style>
 </head>
 <body>
@@ -506,12 +658,13 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
   
 
   <!-- ===== STAGE ===== -->
-  <main class="stage"><div class="beam"></div>
-    <div class="phone"><div class="app" id="app">
+  <main class="stage"><canvas class="atmos" id="atmos-stage"></canvas>
+    <div class="phone"><div class="app" id="app"><canvas class="atmos" id="atmos-app"></canvas>
       <header class="topbar">
         <div class="clubtag"><div class="badge" id="tb-badge">HH</div><div><div class="n" id="tb-name">HighlightsHub</div><div class="s" id="tb-sub">Make every game count</div></div></div>
         <div class="row"><span class="tag live" id="livetag" style="display:none">Live</span><button class="railbtn" onclick="toggleRail(true)">Demo</button><button class="avatar" onclick="go('hub')" aria-label="Your Hub">PT</button></div>
       </header>
+      <div class="ticker" aria-hidden="true"><div class="lab">Live</div><div class="run"><span><b>GOAL</b> Omar K. 12'<i>·</i><b>GOAL</b> Punit T. 27' nominated for Goal of the Week<i>·</i>Thursday 5s upload: <b>4 goals found</b><i>·</i>Voting closes Sunday<i>·</i>Omar K. climbs to <b>#1</b><i>·</i>Hat-trick hero unlocked by Sami R.<i>·</i></span></div></div>
       <div class="flash" id="flash"></div>
       <div class="toast" id="toast" role="status"></div>
 
@@ -520,8 +673,8 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
         <!-- ================= 1. HOME ================= -->
         <section class="screen" id="s-home">
           <div class="hero">
-            <div class="flood"></div>
-            <h1>Make<br>every<br><span class="hl">game</span><br>count.</h1>
+            <div class="horizon"><svg viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke-width="1.2"><line x1="200" y1="40" x2="-200" y2="300"/><line x1="200" y1="40" x2="80" y2="300"/><line x1="200" y1="40" x2="200" y2="300"/><line x1="200" y1="40" x2="320" y2="300"/><line x1="200" y1="40" x2="600" y2="300"/><path class="move" d="M-20 90H420"/><path class="move" d="M-20 140H420"/><path class="move" d="M-20 205H420"/><path class="move" d="M-20 290H420"/><ellipse cx="200" cy="150" rx="60" ry="18"/></g></svg></div>
+            <h1 id="h1"><span data-w="Make"></span><br><span data-w="every"></span><br><span class="hl" data-w="game"></span><br><span data-w="count."></span></h1>
             <p>Upload the full match. We find every goal, clip it, auto-zoom the finish and drop it in the group chat before the showers run cold.</p>
             <div class="row" style="margin-top:22px"><button class="btn primary" onclick="go('upload')">Upload a game</button><button class="btn ghost" onclick="document.getElementById('find').scrollIntoView({behavior:'smooth'})">Find your game</button></div>
           </div>
@@ -531,7 +684,17 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <div><div class="v" data-count="97">0</div><div class="l">Goals tagged, %</div></div>
           </div>
 
-          <div class="sec" id="find">
+          
+          <div class="sec rv">
+            <div class="sec-h"><h2>Warm up</h2><span class="meta">Every 10 keepy-uppies = +50 XP</span></div>
+            <div class="ku" id="ku">
+              <canvas id="kucv" width="360" height="380" aria-label="Keepy-uppy. Tap the ball to keep it up." role="img"></canvas>
+              <div class="hud"><div><span id="ku-score">0</span><small>Keepy-uppies</small></div><div class="r"><span id="ku-best">0</span><small>Best</small></div></div>
+              <div class="pop" id="ku-pop">+50 XP</div>
+              <div class="ov" id="ku-ov"><div><h3 id="ku-title">Keepy-uppy</h3><p id="ku-text">Tap the ball. Don't let it drop. XP goes straight on your card.</p><button class="btn primary" id="ku-start">Kick off</button></div></div>
+            </div>
+          </div>
+          <div class="sec rv" id="find">
             <div class="sec-h"><h2>Find your game</h2><span class="meta">Watching needs no account</span></div>
             <div class="inwrap"><svg class="i" data-ic="search"></svg><input class="input" placeholder="Pitch, organiser or game code"></div>
             <div class="scroll-x" style="margin-top:12px">
@@ -539,7 +702,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>How it works</h2></div>
             <div class="steps">
               <div class="step"><div class="ic"><svg class="i" data-ic="camera"></svg></div><div><h3>Film the whole pitch</h3><p class="muted">Any camera that sees both goals. 1080p minimum, 2.7K or 4K recommended. A phone on the fence is fine.</p></div></div>
@@ -548,10 +711,10 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>For players</h2><a class="link" href="#hub" onclick="go('hub');return false">Your Hub</a></div>
             <div class="pc-wrap" style="max-width:224px"><div class="pc" data-tier="gold" onclick="this.classList.toggle('flipped')">
-              <div class="face front"><div class="foil"></div>
+              <div class="face front"><div class="foil"></div><div class="glare"></div>
                 <div class="rating"><div><div class="ovr">87</div><div class="pos">ST</div></div><div class="tier">Gold</div></div>
                 <div class="gotw"><i><svg data-ic="star"></svg></i><i><svg data-ic="star"></svg></i></div>
                 <div class="photo"></div>
@@ -564,7 +727,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <p class="muted" style="text-align:center;margin:16px auto 0;max-width:30ch">Your card is a collectible. Score and it ranks up: Bronze, Silver, Gold, Legend. Gold and above gets the foil.</p>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>For organisers</h2><a class="link" href="#upload" onclick="go('upload');return false">Upload flow</a></div>
             <div>
               <div class="check"><i>1</i>Upload once a week, free. Every goal found and clipped for the whole squad.</div>
@@ -573,14 +736,14 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Pricing</h2><div class="seg sm" id="cur"><button class="on" data-c="AED">AED</button><button data-c="GBP">GBP</button><button data-c="EUR">EUR</button><button data-c="USD">USD</button></div></div>
             <div class="price"><div class="hd"><h3>Organisers</h3><span class="meta">1 game a week</span></div><div class="p">Free</div><ul><li><svg class="i" data-ic="check"></svg>Every goal found and clipped</li><li><svg class="i" data-ic="check"></svg>Game page and leaderboard</li><li><svg class="i" data-ic="check"></svg>Share straight to the group chat</li></ul></div>
             <div class="price feat"><div class="hd"><h3>Players · Pro</h3><span class="tag pro">Coming soon</span></div><div class="p"><span class="cur">AED</span> <span class="pm">9.99</span><small>/month</small></div><p class="meta">or <span class="cur">AED</span> <span class="py">99.99</span> a year. The free tier keeps highlights for 30 days.</p><ul><li><svg class="i" data-ic="check"></svg>Permanent highlights library</li><li><svg class="i" data-ic="check"></svg>Gold and Legend card tiers</li><li><svg class="i" data-ic="check"></svg>Achievement cards for every unlock</li></ul><button class="btn primary block" style="margin-top:16px" onclick="go('plan')">Join the waitlist</button></div>
             <div class="price"><div class="hd"><h3>Clubs and leagues</h3><span class="meta">Custom</span></div><div class="p">Let's talk</div><ul><li><svg class="i" data-ic="check"></svg>Your badge and colours on everything</li><li><svg class="i" data-ic="check"></svg>Season table and club trophy room</li><li><svg class="i" data-ic="check"></svg>Roster and organiser management</li></ul></div>
           </div>
 
-          <div class="sec faq">
+          <div class="sec rv faq">
             <div class="sec-h"><h2>Questions</h2></div>
             <details><summary>Which camera do I need?<svg class="i" data-ic="plus"></svg></summary><p>Anything that shows the whole pitch. 1080p minimum, 2.7K or 4K recommended. A phone on a tripod behind the goal line works.</p></details>
             <details><summary>Do my mates need the app?<svg class="i" data-ic="plus"></svg></summary><p>No. Anyone with the link can watch, share the story card and send the GIF to the chat without installing or signing up.</p></details>
@@ -617,7 +780,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
           </div>
           <p class="meta" style="margin-top:8px">Tap a marker to preview the auto-zoom frame. Yellow is the Goal of the Week.</p>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Goals</h2><span class="meta">1 untagged</span></div>
             <div id="timeline">
               <div class="goal-row" data-g="0" onclick="selGoal(0)"><div class="min">12'</div><div class="sc">1–0</div><div class="who"><b>Omar K.</b> · assist <b>Sami R.</b></div></div>
@@ -627,14 +790,14 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Who played</h2><button class="link">Add a player</button></div>
             <div class="players">
               <span class="chip on">Punit T.</span><span class="chip">Omar K.</span><span class="chip">Sami R.</span><span class="chip">Jake A.</span><span class="chip">Mo B.</span><span class="chip">Dan L.</span><span class="chip">+3 more</span>
             </div>
           </div>
 
-          <div class="sec tagbox" id="tagbox">
+          <div class="sec rv tagbox" id="tagbox">
             <span class="meta">44' · 3–1</span>
             <h3>Who scored?</h3>
             <p>Tag it and it lands on your card, your stats and the leaderboard.</p>
@@ -642,7 +805,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <p class="meta" style="margin-top:12px">Not you? <a href="#" onclick="return false" style="color:inherit">Tag a mate instead</a></p>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Share it</h2></div>
             <div class="share">
               <button onclick="toast('Story card ready, 9:16')"><svg class="i" data-ic="phone"></svg>Story card</button>
@@ -662,7 +825,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
         <section class="screen" id="s-hub">
           <div class="row between" style="margin:18px 0 16px;align-items:flex-end"><div><h2 style="font-size:34px">Punit T.</h2><p class="sub">Your Hub · Season 3</p></div><button class="btn ghost sm" onclick="document.getElementById('mainpc').classList.toggle('flipped')">Flip card</button></div>
           <div class="pc-wrap"><div class="pc" id="mainpc" data-tier="gold" onclick="this.classList.toggle('flipped')">
-            <div class="face front"><div class="foil"></div>
+            <div class="face front"><div class="foil"></div><div class="glare"></div>
               <div class="rating"><div><div class="ovr" id="ovr">87</div><div class="pos">ST</div></div><div class="tier" id="tierlbl">Gold</div></div>
               <div class="gotw"><i><svg data-ic="star"></svg></i><i><svg data-ic="star"></svg></i></div>
               <div class="photo"></div>
@@ -686,12 +849,12 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <div><div class="v sg">2</div><div class="l">GOTW</div></div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Form</h2><span class="meta">Last 5 games</span></div>
             <div class="row between"><div class="form"><i class="w"></i><i class="w"></i><i class="d"></i><i class="w"></i><i class="l"></i></div><div class="row" style="gap:22px"><div><div class="num" style="font-size:24px;color:var(--accent)">4</div><div class="meta">Game streak</div></div><div><div class="num" style="font-size:24px">#2</div><div class="meta">This week</div></div></div></div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Challenges</h2></div>
             <div class="rows">
               <div><div class="t">Score in 3 straight games<small>One more on Thursday</small></div><div style="width:84px"><div class="pips"><i class="on"></i><i class="on"></i><i></i></div><div class="meta" style="text-align:right;margin-top:4px">2 of 3</div></div></div>
@@ -700,7 +863,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Trophy cabinet</h2><span class="meta">6 of 11</span></div>
             <div class="cab" id="cab">
               <div class="tr"><svg class="i" data-ic="ball"></svg>First goal</div>
@@ -718,7 +881,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Highlights</h2><span class="tag pro">Pro keeps forever</span></div>
             <div class="rows">
               <div><div class="badge">27'</div><div class="t">Goal v Visitors<small>Thursday 5s · 3 days ago</small></div><span class="meta">27 days left</span></div>
@@ -740,7 +903,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Reels</h2><a class="link" href="#reel" onclick="go('reel');return false">Watch all</a></div>
             <div class="scroll-x">
               <div class="story sm" onclick="go('reel')"><div class="top"><div class="meta">12'</div></div><div class="big">Omar<br>K.</div><div class="meta">1–0</div></div>
@@ -750,12 +913,12 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Player of the week</h2></div>
             <div class="spot"><div class="av">OK</div><div style="flex:1"><h3>Omar K.</h3><p class="meta">2 goals, 1 assist, climbed to #1</p></div><div class="rating">9.4</div></div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Leaderboard</h2><button class="link" onclick="shuffleRanks()">Simulate a week</button></div>
             <div class="lb">
               <div class="hd"><span>#</span><span>Player</span><span style="text-align:center">G</span><span style="text-align:center">A</span><span style="text-align:center">XP</span></div>
@@ -773,7 +936,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Goal of the week</h2><span class="meta">Swipe to vote · ends Sunday</span></div>
             <div class="vote" id="vote">
               <div class="vcard" data-i="2"><div class="ov"><span class="tag" style="align-self:flex-start">Sunday League · R9</span><div><h3>Jake A. · 19'</h3><p class="meta">Volley from the edge of the D</p></div></div><div class="stamp yes">YES</div><div class="stamp no">NAH</div></div>
@@ -817,7 +980,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Processing</h2><span class="meta" id="scanstate">Waiting for a file</span></div>
             <div class="scan" id="scan">
               <div class="beam"></div>
@@ -847,7 +1010,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <div><div class="v">4.2</div><div class="l">Goals a game</div></div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Branding</h2><span class="meta">Live preview</span></div>
             <div class="colors">
               <label>Primary<input type="color" id="c-primary" value="#49e87a" oninput="setClubColors()"></label>
@@ -857,7 +1020,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             <p class="meta" style="margin-top:12px">Badge, colours and name flow to every header, reel lower-third, story card and leaderboard. One config skins the whole product.</p>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Games</h2><button class="link" onclick="go('upload')">Upload</button></div>
             <div class="rows">
               <div onclick="go('game')" style="cursor:pointer"><div class="badge">12</div><div class="t">Thursday 5s · Week 12<small>3–2 · 4 goals · 1 untagged</small></div><span class="tag live">Live</span></div>
@@ -866,12 +1029,12 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Organisers</h2><button class="link">Invite</button></div>
             <div class="row wrap"><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">PT</span>Punit · Owner</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">OK</span>Omar · Thursdays</span><span class="chip"><span class="avatar" style="width:22px;height:22px;font-size:11px">SR</span>Sami · Sundays</span></div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Season table</h2><span class="meta">Club leaderboard</span></div>
             <div class="table">
               <div class="r h"><span>#</span><span>Team</span><span style="text-align:center">P</span><span style="text-align:center">W</span><span style="text-align:center">D</span><span style="text-align:center">L</span><span style="text-align:center">Pts</span></div>
@@ -882,7 +1045,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Roster</h2><span class="meta">42 players</span></div>
             <div class="roster">
               <div><div class="avatar gold">PT</div>Punit T.</div>
@@ -896,7 +1059,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
             </div>
           </div>
 
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Club trophy room</h2></div>
             <div class="cab"><div class="tr"><svg class="i" data-ic="trophy"></svg>Season 2 champions</div><div class="tr"><svg class="i" data-ic="ball"></svg>100 club goals</div><div class="tr"><svg class="i" data-ic="camera"></svg>25 games filmed</div><div class="tr locked"><svg class="i" data-ic="share"></svg>500 shares</div></div>
           </div>
@@ -907,16 +1070,16 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
           <h2 style="font-size:34px;margin:18px 0 4px">Player · Free</h2>
           <p class="sub" style="margin-bottom:18px">My plan</p>
           <div class="row between panel"><div><b>Highlights expire in 30 days</b><p class="meta" style="margin-top:4px">3 clips expiring this month</p></div><div class="num" style="font-size:36px;color:var(--signal)">27<span style="font-size:18px;color:var(--ink-3)">d</span></div></div>
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Upgrade</h2><div class="seg sm" id="cur2"><button class="on" data-c="AED">AED</button><button data-c="GBP">GBP</button><button data-c="EUR">EUR</button><button data-c="USD">USD</button></div></div>
             <div class="seg" id="billing"><button class="on" onclick="setBilling(this,'m')">Monthly</button><button onclick="setBilling(this,'y')">Yearly, save 17%</button></div>
             <div class="price feat" style="margin-top:14px"><div class="hd"><h3>Player Pro</h3><span class="tag pro">Coming soon</span></div><div class="p"><span class="cur">AED</span> <span id="planprice">9.99</span><small id="planper">/month</small></div><ul><li><svg class="i" data-ic="check"></svg>Permanent highlights library</li><li><svg class="i" data-ic="check"></svg>Gold and Legend tiers with the foil card</li><li><svg class="i" data-ic="check"></svg>Achievement cards for every unlock</li><li><svg class="i" data-ic="check"></svg>Career record across every club you play for</li></ul><button class="btn primary block" style="margin-top:16px" onclick="toast('You are on the Pro waitlist')">Join the waitlist</button><p class="meta" style="text-align:center;margin-top:10px">Billed in AED, GBP, EUR or USD. Cancel any time.</p></div>
           </div>
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Organiser</h2></div>
             <div class="rows"><div><div class="badge">1</div><div class="t">Free · 1 game a week<small>Next upload unlocks Thu 13 Nov</small></div><span class="tag ok">Active</span></div></div>
           </div>
-          <div class="sec">
+          <div class="sec rv">
             <div class="sec-h"><h2>Clubs and leagues</h2></div>
             <p class="muted">Running more than one game a week? Custom branding, unlimited organisers, a season table and a trophy room. We set it up with you.</p><button class="btn ghost block" style="margin-top:14px" onclick="toast('We will be in touch')">Let's talk</button>
           </div>
@@ -985,7 +1148,7 @@ footer.site .mark b{color:var(--ink-2);font-weight:600}
 </div>
 
 <canvas id="confetti"></canvas>
-<div class="takeover" id="takeover" onclick="closeTakeover()"><div class="light"></div><div class="inner"><div class="ic"><svg class="i" data-ic="trophy"></svg></div><p class="meta" style="color:var(--gold1);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Trophy unlocked</p><h2 id="tk-h">Hat-trick hero</h2><p id="tk-p">Three in one game. Unreal.</p><div class="row" style="justify-content:center"><button class="btn primary" onclick="event.stopPropagation();closeTakeover();toast('Achievement card ready, 9:16')">Share the card</button><button class="btn ghost" onclick="closeTakeover()">To the cabinet</button></div></div></div>
+<div class="takeover" id="takeover" onclick="closeTakeover()"><div class="rays"></div><div class="inner"><div class="ic"><svg class="i" data-ic="trophy"></svg></div><p class="meta" style="color:var(--gold1);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Trophy unlocked</p><h2 id="tk-h">Hat-trick hero</h2><p id="tk-p">Three in one game. Unreal.</p><div class="row" style="justify-content:center"><button class="btn primary" onclick="event.stopPropagation();closeTakeover();toast('Achievement card ready, 9:16')">Share the card</button><button class="btn ghost" onclick="closeTakeover()">To the cabinet</button></div></div></div>
 
 <script>
 /* ---------- Icon set: one stroke, one weight, drawn ---------- */
@@ -1180,6 +1343,74 @@ function pickRole(b){[...b.parentNode.children].forEach(x=>x.classList.toggle('o
 applySkin('hh');
 const start=(location.hash||'').replace('#','');go(SCREENS.includes(start)?start:'home');
 addEventListener('hashchange',()=>{const h=location.hash.replace('#','');if(SCREENS.includes(h)&&!document.getElementById('s-'+h).classList.contains('on'))go(h)});
+
+/* ---------- V2: atmosphere ---------- */
+function atmos(cv,opts){
+  const ctx=cv.getContext('2d');let W,H,motes=[],t=0,raf;
+  const o=Object.assign({n:70,beams:true,alpha:1},opts||{});
+  function size(){const r=cv.parentElement.getBoundingClientRect();W=cv.width=Math.max(1,r.width*Math.min(2,devicePixelRatio));H=cv.height=Math.max(1,r.height*Math.min(2,devicePixelRatio));ctx.setTransform(Math.min(2,devicePixelRatio),0,0,Math.min(2,devicePixelRatio),0,0);W=r.width;H=r.height;motes=[...Array(o.n)].map(()=>({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*1.8,s:.15+Math.random()*.45,p:Math.random()*Math.PI*2,a:.25+Math.random()*.6}))}
+  size();new ResizeObserver(size).observe(cv.parentElement);
+  let col='#49e87a',lastc=0;
+  function frame(){
+    t+=1;if(t-lastc>60){col=getComputedStyle(document.documentElement).getPropertyValue('--club-primary').trim()||col;lastc=t}
+    ctx.clearRect(0,0,W,H);
+    if(o.beams){
+      // two slow floodlight beams
+      for(let i=0;i<2;i++){const cx=W*(i?.82:.18)+Math.sin(t/900+i*2)*W*.08;const g=ctx.createRadialGradient(cx,-H*.2,0,cx,-H*.2,H*1.1);g.addColorStop(0,'rgba(246,244,238,.16)');g.addColorStop(.5,'rgba(246,244,238,.04)');g.addColorStop(1,'rgba(246,244,238,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(cx,-H*.2);ctx.lineTo(cx-W*.55,H*1.2);ctx.lineTo(cx+W*.55,H*1.2);ctx.closePath();ctx.fill()}
+      // club-colour glow pool bottom
+      const g2=ctx.createRadialGradient(W*.5,H*1.05,0,W*.5,H*1.05,H*.7);g2.addColorStop(0,col+'33');g2.addColorStop(1,col+'00');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+    }
+    if(!rm){motes.forEach(m=>{m.y-=m.s;m.x+=Math.sin(t/60+m.p)*.25;if(m.y<-6){m.y=H+6;m.x=Math.random()*W}const a=m.a*(0.6+0.4*Math.sin(t/40+m.p));ctx.fillStyle=`rgba(246,244,238,${a*o.alpha})`;ctx.shadowColor=col;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fill()});ctx.shadowBlur=0}
+    raf=requestAnimationFrame(frame)}
+  frame();document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else frame()});
+}
+atmos(document.getElementById('atmos-app'),{n:60});
+if(innerWidth>900)atmos(document.getElementById('atmos-stage'),{n:90,alpha:.7});
+
+/* ---------- V2: kinetic headline ---------- */
+(function(){const h=document.getElementById('h1');if(!h)return;let d=0;h.querySelectorAll('span[data-w]').forEach(sp=>{sp.innerHTML=[...sp.dataset.w].map(c=>{d+=.045;return `<span class="ch" style="animation-delay:${d.toFixed(2)}s">${c}</span>`}).join('')})})();
+
+/* ---------- V2: reveals inside the phone scroller ---------- */
+(function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{root:document.getElementById('view'),rootMargin:'0px 0px -8% 0px',threshold:.08});
+function arm(){document.querySelectorAll('.screen.on .rv:not(.in)').forEach(el=>io.observe(el))}
+arm();const _go=go;go=function(id){_go(id);setTimeout(arm,50)};
+document.querySelectorAll('.screen:not(.on) .rv').forEach(el=>io.observe(el));})();
+
+/* ---------- V2: card tilt + glare ---------- */
+document.querySelectorAll('.pc-wrap').forEach(w=>{
+  const pc=w.querySelector('.pc'),gl=w.querySelectorAll('.glare');
+  function mv(e){if(rm)return;const r=w.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;w.style.transform=`perspective(1200px) rotateY(${(x-.5)*22}deg) rotateX(${(.5-y)*18}deg)`;gl.forEach(g=>{g.style.setProperty('--gx',(x*100)+'%');g.style.setProperty('--gy',(y*100)+'%')})}
+  function out(){w.style.transform='';}
+  w.addEventListener('pointermove',mv);w.addEventListener('pointerleave',out);w.addEventListener('pointerup',out);
+});
+
+/* ---------- V2: keepy-uppy warm-up (XP feeds the card) ---------- */
+(function(){
+  const cv=document.getElementById('kucv');if(!cv)return;const ctx=cv.getContext('2d');const W=cv.width,H=cv.height;
+  const sc=document.getElementById('ku-score'),bs=document.getElementById('ku-best'),ov=document.getElementById('ku-ov'),ti=document.getElementById('ku-title'),tx=document.getElementById('ku-text'),st=document.getElementById('ku-start'),pop=document.getElementById('ku-pop');
+  let best=0;try{best=+localStorage.getItem('hh_ku_best')||0}catch(e){}bs.textContent=best;
+  let ball={x:W/2,y:H*.4,vx:0,vy:0,r:28,rot:0},score=0,run=false,raf,parts=[],col='#49e87a';
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // pitch floor
+    const g=ctx.createLinearGradient(0,H*.7,0,H);g.addColorStop(0,'rgba(73,232,122,0)');g.addColorStop(1,col+'55');ctx.fillStyle=g;ctx.fillRect(0,H*.7,W,H*.3);
+    ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(W/2,H*.86,90,16,0,0,Math.PI*2);ctx.stroke();
+    // shadow
+    const sh=Math.max(.2,1-(H*.86-ball.y)/H);ctx.fillStyle=`rgba(0,0,0,${.35*sh})`;ctx.beginPath();ctx.ellipse(ball.x,H*.86,ball.r*sh*1.1,ball.r*sh*.35,0,0,Math.PI*2);ctx.fill();
+    parts=parts.filter(p=>p.l>0);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.25;p.l--;ctx.globalAlpha=p.l/30;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,4,4)});ctx.globalAlpha=1;
+    // ball
+    ctx.save();ctx.translate(ball.x,ball.y);ctx.rotate(ball.rot);ctx.shadowColor=col;ctx.shadowBlur=24;ctx.fillStyle='#f6f4ee';ctx.beginPath();ctx.arc(0,0,ball.r,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+    ctx.fillStyle='#0b0d11';for(let k=0;k<5;k++){const a=k*Math.PI*2/5;ctx.beginPath();ctx.arc(Math.cos(a)*ball.r*.55,Math.sin(a)*ball.r*.55,ball.r*.22,0,Math.PI*2);ctx.fill()}ctx.beginPath();ctx.arc(0,0,ball.r*.2,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+  }
+  function step(){if(!run)return;ball.vy+=.32;ball.x+=ball.vx;ball.y+=ball.vy;ball.rot+=ball.vx*.03;if(ball.x<ball.r){ball.x=ball.r;ball.vx*=-.7}if(ball.x>W-ball.r){ball.x=W-ball.r;ball.vx*=-.7}
+    if(ball.y>H+ball.r){end();return}draw();raf=requestAnimationFrame(step)}
+  function end(){run=false;cancelAnimationFrame(raf);if(score>best){best=score;bs.textContent=best;try{localStorage.setItem('hh_ku_best',best)}catch(e){}}ti.textContent=score>=10?'Proper touch.':score>0?'Dropped it.':'Keepy-uppy';tx.textContent=score>=10?`${score} in a row. XP banked on your card.`:score>0?`${score} in a row. Ten in a row banks 50 XP.`:'Tap the ball. Don\'t let it drop. XP goes straight on your card.';st.textContent=score>0?'Go again':'Kick off';ov.classList.remove('hide')}
+  function start(){score=0;sc.textContent=0;ball={x:W/2,y:H*.35,vx:0,vy:-2,r:28,rot:0};run=true;ov.classList.add('hide');col=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||col;step()}
+  st.addEventListener('click',e=>{e.stopPropagation();start()});
+  cv.addEventListener('pointerdown',e=>{if(!run)return;const r=cv.getBoundingClientRect();const x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;const d=Math.hypot(x-ball.x,y-ball.y);if(d<ball.r*1.8){score++;sc.textContent=score;ball.vy=-(9+Math.random()*2);ball.vx=(ball.x-x)*.25+(Math.random()-.5)*2;for(let i=0;i<14;i++)parts.push({x:ball.x,y:ball.y,vx:(Math.random()-.5)*6,vy:-Math.random()*5,l:30,c:i%2?col:'#f6f4ee'});if(score%10===0){xp+=50;roll(document.getElementById('xpnow'),xp);pop.classList.remove('go');void pop.offsetWidth;pop.classList.add('go');toast(`+50 XP · ${score} in a row`)}}});
+  draw();
+})();
 </script>
 </body>
 </html>
