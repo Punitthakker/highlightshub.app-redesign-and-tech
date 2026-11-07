@@ -1,12 +1,27 @@
-# HighlightsHub redesign
+# HighlightsHub · redesign demo and incremental features
 
-Interactive redesign demo for HighlightsHub (highlightshub.app): broadcast quality for grassroots football.
+Two things live here.
 
-- `index.html` - the full prototype. Single file, no build step. Eight core screens, club-skinnable design system (CSS variables), animation and gamification layer.
-- `docs/` - reference screenshots.
+## 1. Incremental features for the live site (the ask)
+Adam's brief: keep the current look and UX, improve at the margins, feed small changes into master one at a time.
 
-Design process ran through the [impeccable](https://github.com/Punitthakker/impeccable) skill: init, document, critique, craft, colorize, typeset, animate, delight, onboard, adapt, harden. The impeccable detector passes clean on `index.html`.
+- `components/flip-card/flip-card.js` - `<hh-flip-card>` web component. Wrap the existing rating card (front) and a career record (back). Tap, click or Enter to flip. Handles iOS Safari backface, keyboard access and reduced motion. Ships no visual styles; the site's own card markup and CSS are used as they are. Demo: `/card/`.
+- `kids/index.html` - Kids Zone. Keepy-uppy with score and best, XP and four levels, six achievements. Inherits `--hh-*` tokens when the host defines them, otherwise uses neutral fallbacks. Nothing leaves the phone (localStorage only, no accounts, no tracking). Demo: `/kids/`.
 
-Deployed on Netlify from `main`.
+Both are plain HTML/JS with no build step so they can be dropped into whatever the site runs on.
 
-Designed by POJOboys.com
+### Integration
+1. Flip card: add `<script src="/components/flip-card/flip-card.js" defer>` once, then wrap the card:
+   ```html
+   <hh-flip-card>
+     <div slot="front"> existing card </div>
+     <div slot="back">  career record </div>
+   </hh-flip-card>
+   ```
+   Give `hh-flip-card` the same `border-radius` as the card so the outline matches. Listen for the `flip` event if you want analytics.
+2. Kids Zone: mount `kids/index.html` at a route (for example `/kids`). Replace the font link and the `:root` fallbacks with the site's tokens if they differ. Hook XP into the player card later if wanted; the page keeps its own state until then.
+
+## 2. Full redesign demo (reference only)
+`index.html` is the interactive prototype shown to Adam: eight screens, club skins, light and dark, Arabic, walkthrough. It is parked as reference material. `DESIGN.md` documents its system.
+
+Deployed on Netlify from `main`. Designed by POJOboys.com
